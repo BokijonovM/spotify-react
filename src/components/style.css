@@ -1,47 +1,44 @@
-.sidebar-div{
-    height: 100vh;
-    background-color: black;
+.sidebar-div {
+  height: 100vh;
+  background-color: black;
 }
 
-.logo-sidebar{
-    width: 70%;
-    padding-top: 20px; 
+.logo-sidebar {
+  width: 70%;
+  padding-top: 20px;
 }
 
-.main-nav{
-    position: fixed;
-    z-index: 1;
-    width: 78vw;
-    height: 60px
+.main-nav {
+  position: fixed;
+  z-index: 1;
+  width: 78vw;
+  height: 60px;
 }
 
-.nav-btn{
-    border-radius: 99px;
+.nav-btn {
+  border-radius: 99px;
 }
 
-
-.footer-div{
-    width: 100%;
-    position: fixed;
-    bottom: 0;
+.footer-div {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 /* .footer-main{
     background-color: #181818;
     height: 100px
 } */
 
-.main-nav-h6-text>h6{
-    font-size: 12px; 
-    margin-right: 40px;
-    margin-bottom: 0px;
-    cursor: pointer;
+.main-nav-h6-text > h6 {
+  font-size: 12px;
+  margin-right: 40px;
+  margin-bottom: 0px;
+  cursor: pointer;
 }
-.main-nav-h6-text>h6:hover{
-    color: rgb(66, 66, 66);
-    border-bottom: 2px solid black;
+.main-nav-h6-text > h6:hover {
+  color: rgb(66, 66, 66);
+  border-bottom: 2px solid black;
 }
-
-
 
 .music-player {
   background-color: #181818;
