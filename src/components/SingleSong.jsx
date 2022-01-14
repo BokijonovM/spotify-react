@@ -3,7 +3,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 
-const Song = ({ albumCards }) => {
+const SingleSong = ({ albumCards }) => {
   console.log("hello", albumCards);
   return (
     <Col md={3} style={{ backgroundColor: "transparent" }}>
@@ -17,4 +17,4 @@ const Song = ({ albumCards }) => {
   );
 };
 
-export default Song;
+export default SingleSong;

@@ -4,12 +4,12 @@ import { Row, Col, Container, Card } from "react-bootstrap";
 import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
 import { useState, useEffect } from "react";
-import Song from "./Song";
+import SingleSong from "./SingleSong";
 import Loader from "./Loader";
 
 function MyMain() {
   const [albumCards, setAlbumCards] = useState(null);
-  const [isLoading, setisLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -32,7 +32,8 @@ function MyMain() {
         if (response.ok) {
           let data = await response.json();
           console.log(data);
-          setAlbumCards(data.data);
+          setAlbumCards(data);
+          //   setIsLoading(false);
         } else {
           console.log("Sorry");
         }
@@ -77,7 +78,7 @@ function MyMain() {
                     <Loader />
                   ) : (
                     albumCards.map(albumCards => {
-                      return <Song albumCards={albumCards} />;
+                      return <SingleSong albumCards={albumCards} />;
                     })
                   )}
                 </Row>
