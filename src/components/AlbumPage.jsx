@@ -43,10 +43,10 @@ function AlbumPage() {
   return (
     <div>
       <Row>
-        <Col md={3} className="p-0 bg-dark">
+        <Col md={2} className="p-0 bg-dark">
           <MySidebar />
         </Col>
-        <Col md={9} className="p-0 bg-light">
+        <Col md={10} className="p-0 bg-light">
           <MainNav />
           <div className="">
             <Container>

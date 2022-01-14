@@ -43,10 +43,10 @@ function ArtistPage() {
   return (
     <div>
       <Row>
-        <Col md={3} className="p-0 bg-dark">
+        <Col md={2} className="p-0 bg-dark">
           <MySidebar />
         </Col>
-        <Col md={9} className="p-0 bg-light">
+        <Col md={10} className="p-0 bg-light">
           <MainNav />
           <div className="">
             <Container>
@@ -55,7 +55,7 @@ function ArtistPage() {
                   <img
                     style={{
                       height: "300px",
-                      width: "76vw",
+                      width: "100vw",
                       objectFit: "cover",
                       objectPosition: "top",
                     }}
@@ -63,7 +63,7 @@ function ArtistPage() {
                   />
                 </div>
                 <div
-                  style={{ paddingRight: "170px", paddingLeft: "170px" }}
+                  style={{ paddingRight: "170px", paddingLeft: "70px" }}
                   className=" pt-5 d-flex justify-content-between w-100"
                 >
                   <div className="d-flex">
@@ -74,6 +74,7 @@ function ArtistPage() {
                     <p>4:11</p>
                   </div>
                 </div>
+
                 {/* <Col className="d-flex flex-column align-items-start">
                   <img
                     className="my-4"

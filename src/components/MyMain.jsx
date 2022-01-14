@@ -4,9 +4,12 @@ import { Row, Col, Container, Card } from "react-bootstrap";
 import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
 import { useState, useEffect } from "react";
+import Song from "./Song";
+import Loader from "./Loader";
 
 function MyMain() {
-  const [albumCard, setAlbumCard] = useState([]);
+  const [albumCards, setAlbumCards] = useState(null);
+  const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -29,7 +32,7 @@ function MyMain() {
         if (response.ok) {
           let data = await response.json();
           console.log(data);
-          setAlbumCard(data);
+          setAlbumCards(data.data);
         } else {
           console.log("Sorry");
         }
@@ -43,10 +46,10 @@ function MyMain() {
   return (
     <div>
       <Row>
-        <Col md={3} className="p-0 bg-dark">
+        <Col md={2} className="p-0 bg-dark">
           <MySidebar />
         </Col>
-        <Col md={9} className="p-0 bg-light">
+        <Col md={10} className="p-0 bg-light">
           <MainNav />
           <div className="pt-5">
             <Container>
@@ -59,16 +62,25 @@ function MyMain() {
                   />
                   <h2 style={{ textAlign: "start" }}>{albumCard.title}</h2>
                 </Col> */}
-                <Card className="ml-5 mt-5" style={{ marginBottom: "390px" }}>
+                {/* <Card className="ml-5 mt-5" style={{ marginBottom: "390px" }}>
                   <Card.Img
                     variant="top"
                     style={{ width: "150px" }}
-                    src="https://th.bing.com/th/id/OIP.lC7JJR1gYH3_T1CdkT4zjwHaKp?pid=ImgDet&rs=1"
+                    src={albumCard.artist.picture}
                   />
                   <Card.Body>
-                    <Card.Title>title</Card.Title>
+                    <Card.Title>{albumCard.title}</Card.Title>
                   </Card.Body>
-                </Card>
+                </Card> */}
+                <Row className="pt-4 ml-5">
+                  {isLoading ? (
+                    <Loader />
+                  ) : (
+                    albumCards.map(albumCards => {
+                      return <Song albumCards={albumCards} />;
+                    })
+                  )}
+                </Row>
 
                 {/* {albumCard.map((album, i) => {
                   return (
