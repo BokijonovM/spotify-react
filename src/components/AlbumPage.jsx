@@ -51,15 +51,25 @@ function AlbumPage() {
           <div className="">
             <Container>
               <Row>
-                <div>
+                <div className="d-flex align-items-center">
                   <img
                     style={{
-                      height: "300px",
-                      width: "100vw",
-                      objectFit: "cover",
+                      height: "200px",
+                      marginTop: "100px",
+                      marginLeft: "100px",
                     }}
                     src="https://e-cdns-images.dzcdn.net/images/cover/8b8fc5d117f9357b79f0a0a410a170e8/1000x1000-000000-80-0-0.jpg"
                   />
+                  <div
+                    style={{
+                      marginTop: "100px",
+                      marginLeft: "20px",
+                    }}
+                  >
+                    <h6>ALBUM</h6>
+                    <h2>Queen</h2>
+                    <h6>123,123 SONGS</h6>
+                  </div>
                 </div>
                 <div
                   style={{ paddingRight: "170px", paddingLeft: "170px" }}
@@ -67,7 +77,7 @@ function AlbumPage() {
                 >
                   <div className="d-flex">
                     <p className="pr-5">1</p>
-                    <p>Eminem</p>
+                    <p>Queen</p>
                   </div>
                   <div>
                     <p>4:11</p>

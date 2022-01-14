@@ -48,9 +48,20 @@ function ArtistPage() {
         </Col>
         <Col md={9} className="p-0 bg-light">
           <MainNav />
-          <div className="pt-5">
+          <div className="">
             <Container>
               <Row>
+                <div>
+                  <img
+                    style={{
+                      height: "300px",
+                      width: "76vw",
+                      objectFit: "cover",
+                      objectPosition: "top",
+                    }}
+                    src="https://e-cdns-images.dzcdn.net/images/cover/8b8fc5d117f9357b79f0a0a410a170e8/1000x1000-000000-80-0-0.jpg"
+                  />
+                </div>
                 <div
                   style={{ paddingRight: "170px", paddingLeft: "170px" }}
                   className=" pt-5 d-flex justify-content-between w-100"
