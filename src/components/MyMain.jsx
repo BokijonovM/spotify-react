@@ -1,7 +1,7 @@
 import React from 'react'
 import MySidebar from './MySidebar';
 import {Row, Col} from 'react-bootstrap'
-import MyNav from './MyNav';
+import MainNav from './MainNav';
 import MyFooter from './MyFooter'
 
 function MyMain() {
@@ -12,7 +12,7 @@ function MyMain() {
                     <MySidebar/>
                 </Col>
                 <Col md={9} className='p-0 bg-light'>
-                    <MyNav/>
+                    <MainNav/>
                    <div className='pt-5'>
 
                     <h1>hi</h1>
