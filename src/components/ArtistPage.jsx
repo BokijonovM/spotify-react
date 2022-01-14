@@ -5,14 +5,14 @@ import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
 import { useState, useEffect } from "react";
 
-function MyMain() {
+function ArtistPage() {
   const [albumCard, setAlbumCard] = useState([]);
 
   useEffect(() => {
     const fetchMusic = async () => {
       try {
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen",
+          "https://striveschool-api.herokuapp.com/api/deezer/artist/412",
           {
             method: "GET",
             headers: new Headers({
@@ -51,14 +51,26 @@ function MyMain() {
           <div className="pt-5">
             <Container>
               <Row>
-                <Col className="d-flex flex-column align-items-start">
+                <div
+                  style={{ paddingRight: "170px", paddingLeft: "170px" }}
+                  className=" pt-5 d-flex justify-content-between w-100"
+                >
+                  <div className="d-flex">
+                    <p className="pr-5">1</p>
+                    <p>Eminem</p>
+                  </div>
+                  <div>
+                    <p>4:11</p>
+                  </div>
+                </div>
+                {/* <Col className="d-flex flex-column align-items-start">
                   <img
                     className="my-4"
                     src={albumCard.artist}
                     alt="albumCard1"
                   />
                   <h2 style={{ textAlign: "start" }}>{albumCard.title}</h2>
-                </Col>
+                </Col> */}
                 {/* <Card className="pl-5 ml-5">
                   <Card.Img variant="top" src={albumCard.album.cover_small} />
                   <Card.Body>
@@ -92,4 +104,4 @@ function MyMain() {
   );
 }
 
-export default MyMain;
+export default ArtistPage;
