@@ -30,10 +30,10 @@ function MyMain() {
         );
 
         if (response.ok) {
-          let data = await response.json();
+          let { data } = await response.json();
           console.log(data);
           setAlbumCards(data);
-          //   setIsLoading(false);
+          setIsLoading(false);
         } else {
           console.log("Sorry");
         }
@@ -45,7 +45,7 @@ function MyMain() {
   }, []);
 
   return (
-    <div>
+    <div className="home-page-div">
       <Row>
         <Col md={2} className="p-0 bg-dark">
           <MySidebar />
@@ -73,12 +73,15 @@ function MyMain() {
                     <Card.Title>{albumCard.title}</Card.Title>
                   </Card.Body>
                 </Card> */}
-                <Row className="pt-4 ml-5">
+                <Row
+                  className="pt-4 ml-5 pr-5"
+                  style={{ marginBottom: "120px" }}
+                >
                   {isLoading ? (
                     <Loader />
                   ) : (
-                    albumCards.map(albumCards => {
-                      return <SingleSong albumCards={albumCards} />;
+                    albumCards.map(albumCard => {
+                      return <SingleSong albumCards={albumCard} />;
                     })
                   )}
                 </Row>

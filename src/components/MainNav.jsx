@@ -26,7 +26,7 @@ function MainNav() {
               style={{ textDecoration: "none" }}
               href="/album"
             >
-              TRENDING
+              PODCASTS
             </a>
           </h6>
           <h6>MOOD AND GENRES</h6>

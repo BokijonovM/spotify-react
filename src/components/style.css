@@ -1,17 +1,21 @@
 .sidebar-div {
   height: 100vh;
   background-color: black;
+  position: fixed;
+  z-index: 2;
 }
 
 .logo-sidebar {
-  width: 70%;
+  width: 210px;
   padding-top: 20px;
 }
 
 .main-nav {
   position: fixed;
   z-index: 1;
-  width: 78vw;
+  width: 82vw;
+
+  right: 0;
   height: 60px;
 }
 
@@ -23,6 +27,7 @@
   width: 100%;
   position: fixed;
   bottom: 0;
+  z-index: 3;
 }
 /* .footer-main{
     background-color: #181818;

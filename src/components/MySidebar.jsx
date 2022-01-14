@@ -4,8 +4,11 @@ import logo from "./logo.svg";
 
 function MySidebar() {
   return (
-    <div className=" sidebar-div pl-4">
-      <img className="logo-sidebar" src={logo} alt="logo" />
+    <div className="sidebar-div pl-4">
+      <div>
+        <img className="logo-sidebar" src={logo} alt="logo" />
+      </div>
+
       <div>
         <p
           style={{ fontSize: "14px", fontWeight: "bolder" }}
