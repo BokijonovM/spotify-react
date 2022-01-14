@@ -47,10 +47,10 @@ function MyMain() {
   return (
     <div className="home-page-div">
       <Row>
-        <Col md={2} className="p-0 bg-dark">
+        <Col md={2} className="p-0" style={{ backgroundColor: "black" }}>
           <MySidebar />
         </Col>
-        <Col md={10} className="p-0 bg-light">
+        <Col md={10} className="p-0 main-background-color">
           <MainNav />
           <div className="pt-5">
             <Container>

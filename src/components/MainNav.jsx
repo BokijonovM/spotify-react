@@ -1,34 +1,30 @@
 import React from "react";
 import { Navbar, Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
 function MainNav() {
+  const [navbar, setNavbar] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+  window.addEventListener("scroll", changeBackground);
   return (
     <div>
       <Navbar
         expand="lg"
-        className="main-nav d-flex justify-content-center align-items-center"
+        // className="main-nav d-flex justify-content-center align-items-center"
+        className={navbar ? "navbar active" : "navbar"}
         variant="light"
         bg="transparent"
       >
         <div className="d-flex main-nav-h6-text justify-content-center">
-          <h6>
-            <a
-              className="text-dark"
-              style={{ textDecoration: "none" }}
-              href="/artist"
-            >
-              TRENDING
-            </a>
-          </h6>
-          <h6>
-            <a
-              className="text-dark"
-              style={{ textDecoration: "none" }}
-              href="/album"
-            >
-              PODCASTS
-            </a>
-          </h6>
+          <h6>TRENDING</h6>
+          <h6>PODCASTS</h6>
           <h6>MOOD AND GENRES</h6>
           <h6>NEW RELEASES</h6>
           <h6>DISCOVER</h6>

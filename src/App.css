@@ -36,3 +36,16 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* .navbar {
+  background-color: transparent;
+} */
+
+/* .navbar.active {
+  background-color: grey !important;
+  color: white !important;
+} */
+
+body {
+  background-color: #121212;
+}
