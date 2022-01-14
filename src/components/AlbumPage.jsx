@@ -12,7 +12,7 @@ function AlbumPage() {
     const fetchMusic = async () => {
       try {
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/artist/412",
+          "https://striveschool-api.herokuapp.com/api/deezer/album/75621062",
           {
             method: "GET",
             headers: new Headers({
@@ -28,7 +28,7 @@ function AlbumPage() {
 
         if (response.ok) {
           let data = await response.json();
-          console.log(data);
+          console.log("DATA", data);
           setAlbumCard(data);
         } else {
           console.log("Sorry");
@@ -48,9 +48,19 @@ function AlbumPage() {
         </Col>
         <Col md={9} className="p-0 bg-light">
           <MainNav />
-          <div className="pt-5">
+          <div className="">
             <Container>
               <Row>
+                <div>
+                  <img
+                    style={{
+                      height: "300px",
+                      width: "100vw",
+                      objectFit: "cover",
+                    }}
+                    src="https://e-cdns-images.dzcdn.net/images/cover/8b8fc5d117f9357b79f0a0a410a170e8/1000x1000-000000-80-0-0.jpg"
+                  />
+                </div>
                 <div
                   style={{ paddingRight: "170px", paddingLeft: "170px" }}
                   className=" pt-5 d-flex justify-content-between w-100"

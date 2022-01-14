@@ -51,20 +51,24 @@ function MyMain() {
           <div className="pt-5">
             <Container>
               <Row>
-                <Col className="d-flex flex-column align-items-start">
+                {/* <Col className="d-flex flex-column align-items-start">
                   <img
                     className="my-4"
                     src={albumCard.artist}
                     alt="albumCard1"
                   />
                   <h2 style={{ textAlign: "start" }}>{albumCard.title}</h2>
-                </Col>
-                {/* <Card className="pl-5 ml-5">
-                  <Card.Img variant="top" src={albumCard.album.cover_small} />
+                </Col> */}
+                <Card className="ml-5 mt-5" style={{ marginBottom: "390px" }}>
+                  <Card.Img
+                    variant="top"
+                    style={{ width: "150px" }}
+                    src="https://th.bing.com/th/id/OIP.lC7JJR1gYH3_T1CdkT4zjwHaKp?pid=ImgDet&rs=1"
+                  />
                   <Card.Body>
-                    <Card.Title>{albumCard.title}</Card.Title>
+                    <Card.Title>title</Card.Title>
                   </Card.Body>
-                </Card> */}
+                </Card>
 
                 {/* {albumCard.map((album, i) => {
                   return (
