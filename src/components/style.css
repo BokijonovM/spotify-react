@@ -1,0 +1,26 @@
+.sidebar-div{
+    height: 100vh;
+    background-color: black;
+}
+
+.logo-sidebar{
+    width: 70%;
+    padding-top: 20px; 
+}
+
+.main-nav{
+    position: fixed;
+    z-index: 1;
+    width: 78vw;
+}
+
+.nav-btn{
+    border-radius: 99px;
+}
+
+
+.footer-div{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
