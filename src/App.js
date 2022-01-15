@@ -12,7 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<MyMain />} />
           <Route path="/artist" element={<ArtistPage />} />
-          <Route path="/album" element={<AlbumPage />} />
+          {/* <Route path="/album" element={<AlbumPage />} /> */}
+          <Route path="/album/:albumID" element={<AlbumPage />} />
         </Routes>
       </div>
     </BrowserRouter>

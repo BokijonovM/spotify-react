@@ -3,16 +3,24 @@ import MySidebar from "./MySidebar";
 import { Row, Col, Container, Card } from "react-bootstrap";
 import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+// import SingleAlbum from "./SingleAlbum";
+import Loader from "./Loader";
 
 function AlbumPage() {
-  const [albumCard, setAlbumCard] = useState([]);
+  const params = useParams();
+  // params is ALWAYS going to be an object!
+  console.log("PARAMS!!", typeof params.albumID);
+  const [albums, setAlbums] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMusic = async () => {
       try {
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/album/75621062",
+          "https://striveschool-api.herokuapp.com/api/deezer/album/" +
+            +params.albumID,
           {
             method: "GET",
             headers: new Headers({
@@ -29,7 +37,8 @@ function AlbumPage() {
         if (response.ok) {
           let data = await response.json();
           console.log("DATA", data);
-          setAlbumCard(data);
+          setAlbums(data);
+          setIsLoading(false);
         } else {
           console.log("Sorry");
         }
@@ -58,7 +67,7 @@ function AlbumPage() {
                       marginTop: "100px",
                       marginLeft: "100px",
                     }}
-                    src="https://e-cdns-images.dzcdn.net/images/cover/8b8fc5d117f9357b79f0a0a410a170e8/1000x1000-000000-80-0-0.jpg"
+                    src={albums.cover_xl}
                   />
                   <div
                     style={{
@@ -67,8 +76,8 @@ function AlbumPage() {
                     }}
                   >
                     <h6>ALBUM</h6>
-                    <h2>Queen</h2>
-                    <h6>123,123 SONGS</h6>
+                    <h2>{albums.artist.name}</h2>
+                    <h6>{albums.nb_tracks} SONGS</h6>
                   </div>
                 </div>
                 <div
@@ -76,44 +85,19 @@ function AlbumPage() {
                   className=" pt-5 d-flex justify-content-between w-100"
                 >
                   <div className="d-flex">
-                    <p className="pr-5">1</p>
+                    <p className="pr-5">{albums.tracks.id}</p>
                     <p>Queen</p>
                   </div>
                   <div>
-                    <p>4:11</p>
+                    <p>{albums.tracks.duration}</p>
                   </div>
                 </div>
-                {/* <Col className="d-flex flex-column align-items-start">
-                  <img
-                    className="my-4"
-                    src={albumCard.artist}
-                    alt="albumCard1"
-                  />
-                  <h2 style={{ textAlign: "start" }}>{albumCard.title}</h2>
-                </Col> */}
-                {/* <Card className="pl-5 ml-5">
-                  <Card.Img variant="top" src={albumCard.album.cover_small} />
-                  <Card.Body>
-                    <Card.Title>{albumCard.title}</Card.Title>
-                  </Card.Body>
-                </Card> */}
-
-                {/* {albumCard.map((album, i) => {
-                  return (
-                    <Card key={i}>
-                      <Card.Img
-                        variant="top"
-                        className="card-img1"
-                        src={album.artist.picture}
-                      />
-                      <Card.Body>
-                        <Card.Title>
-                          <h2>{album.title}</h2>
-                        </Card.Title>
-                      </Card.Body>
-                    </Card>
-                  );
-                })} */}
+                <Row
+                  className="pt-4 ml-5 pr-5"
+                  style={{ marginBottom: "120px" }}
+                >
+                  {isLoading ? <Loader /> : <h1>{albums.id}</h1>}
+                </Row>
               </Row>
             </Container>
           </div>
