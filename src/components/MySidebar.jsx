@@ -4,9 +4,9 @@ import logo from "./logo.svg";
 
 function MySidebar() {
   return (
-    <div className="sidebar-div pl-4">
+    <div className="sidebar-div pl-5">
       <div>
-        <img className="logo-sidebar" src={logo} alt="logo" />
+        <img className="pr-4 mt-3 logo-sidebar" src={logo} alt="logo" />
       </div>
 
       <div>

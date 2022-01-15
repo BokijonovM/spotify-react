@@ -15,7 +15,7 @@ function MyMain() {
     const fetchMusic = async () => {
       try {
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen",
+          "https://striveschool-api.herokuapp.com/api/deezer/search?q=maher",
           {
             method: "GET",
             headers: new Headers({
@@ -52,9 +52,12 @@ function MyMain() {
         </Col>
         <Col md={10} className="p-0 main-background-color">
           <MainNav />
-          <div className="pt-5">
+          <div className="pt-5 ml-4">
             <Container>
               <Row>
+                <h1 className="pt-4 pr-5" style={{ marginLeft: "80px" }}>
+                  #THROWBACKTHURSDAY
+                </h1>
                 {/* <Col className="d-flex flex-column align-items-start">
                   <img
                     className="my-4"

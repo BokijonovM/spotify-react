@@ -1,44 +1,40 @@
 import React from "react";
 import MySidebar from "./MySidebar";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Loader from "./Loader";
 
-function ArtistPage() {
-  const [albumCard, setAlbumCard] = useState([]);
+function AlbumPage() {
+  const params = useParams();
+  console.log("PARAMS!!", typeof params.albumID);
+  const [artists, setArtists] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMusic = async () => {
+    const fetchAlbum = async () => {
       try {
-        let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/artist/412",
-          {
-            method: "GET",
-            headers: new Headers({
-              "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-              "X-RapidAPI-Key":
-                "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
-            }),
-          }
-          //   {
-          //     method: "GET",
-          //   }
+        let movieRes = await fetch(
+          "https://striveschool-api.herokuapp.com/api/deezer/artist/" +
+            params.artistID
         );
 
-        if (response.ok) {
-          let data = await response.json();
-          console.log(data);
-          setAlbumCard(data);
+        if (movieRes.ok) {
+          let musics = await movieRes.json();
+          console.log(musics);
+          setArtists(musics);
         } else {
-          console.log("Sorry");
+          console.log("Sorry album error");
         }
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        // console.log(err)
       }
     };
-    fetchMusic();
-  }, []);
+
+    fetchAlbum();
+  }, [params.artistID]);
 
   return (
     <div>
@@ -46,69 +42,83 @@ function ArtistPage() {
         <Col md={2} className="p-0 bg-dark">
           <MySidebar />
         </Col>
-        <Col md={10} className="p-0 bg-light">
+        <Col md={10} className="p-0 bg-light main-background-color-1">
           <MainNav />
-          <div className="">
-            <Container>
-              <Row>
-                <div>
+          <Col>
+            {typeof artists === "undefined" ? (
+              <h1>404 - Artist NOT FOUND</h1>
+            ) : artists ? (
+              <Container>
+                <Row className="d-flex align-items-center">
                   <img
                     style={{
-                      height: "300px",
+                      //   height: "200px",
+                      //   marginTop: "100px",
+                      //   marginLeft: "100px",
+                      height: "350px",
                       width: "100vw",
                       objectFit: "cover",
                       objectPosition: "top",
+                      position: "relative",
                     }}
-                    src="https://e-cdns-images.dzcdn.net/images/cover/8b8fc5d117f9357b79f0a0a410a170e8/1000x1000-000000-80-0-0.jpg"
+                    src={artists.picture_xl}
                   />
-                </div>
-                <div
-                  style={{ paddingRight: "170px", paddingLeft: "70px" }}
-                  className=" pt-5 d-flex justify-content-between w-100"
-                >
-                  <div className="d-flex">
-                    <p className="pr-5">1</p>
-                    <p>Eminem</p>
+                  <div
+                    style={{
+                      marginTop: "100px",
+                      marginLeft: "20px",
+                      position: "absolute",
+                      left: "100px",
+                    }}
+                  >
+                    <h5 className="mb-0 pl-2">
+                      {" "}
+                      <i
+                        style={{ color: "#2e77d0 !important" }}
+                        class="bi bi-patch-check-fill pr-2"
+                      ></i>
+                      Verified artist
+                    </h5>
+                    <h1 className="mb-0" style={{ fontSize: "96px" }}>
+                      {artists.name}
+                    </h1>
+                    <h6 className="pl-2" style={{ fontWeight: "bolder" }}>
+                      {artists.nb_fan} monthly listeners {artists.nb_album}{" "}
+                      albums
+                    </h6>
                   </div>
-                  <div>
-                    <p>4:11</p>
-                  </div>
-                </div>
-
-                {/* <Col className="d-flex flex-column align-items-start">
-                  <img
-                    className="my-4"
-                    src={albumCard.artist}
-                    alt="albumCard1"
-                  />
-                  <h2 style={{ textAlign: "start" }}>{albumCard.title}</h2>
-                </Col> */}
-                {/* <Card className="pl-5 ml-5">
-                  <Card.Img variant="top" src={albumCard.album.cover_small} />
-                  <Card.Body>
-                    <Card.Title>{albumCard.title}</Card.Title>
-                  </Card.Body>
-                </Card> */}
-
-                {/* {albumCard.map((album, i) => {
-                  return (
-                    <Card key={i}>
-                      <Card.Img
-                        variant="top"
-                        className="card-img1"
-                        src={album.artist.picture}
-                      />
-                      <Card.Body>
-                        <Card.Title>
-                          <h2>{album.title}</h2>
-                        </Card.Title>
-                      </Card.Body>
-                    </Card>
-                  );
-                })} */}
-              </Row>
-            </Container>
-          </div>
+                </Row>
+                <Row className="justify-content-center"></Row>
+                {/* <Row className="justify-content-center">
+                  {isLoading ? (
+                    <Loader />
+                  ) : (
+                    artists.map(artist => {
+                      return (
+                        <div
+                          style={{
+                            paddingRight: "170px",
+                            paddingLeft: "170px",
+                          }}
+                          className=" d-flex justify-content-between w-100"
+                        >
+                          <div className="d-flex">
+                            <p className="pr-5">{artist.tracks.id}</p>
+                            <p>Queen</p>
+                          </div>
+                          <div>
+                            <p>{artist.tracks.duration}</p>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </Row> */}
+              </Container>
+            ) : (
+              <Loader />
+            )}
+          </Col>
         </Col>
         <MyFooter />
       </Row>
@@ -116,4 +126,31 @@ function ArtistPage() {
   );
 }
 
-export default ArtistPage;
+export default AlbumPage;
+
+// <div
+//                     className="pt-5 d-flex justify-content-between w-100"
+//                     style={{
+//                       paddingRight: "170px",
+//                       paddingLeft: "170px",
+//                     }}
+//                   >
+//                     <div className="d-flex">
+//                       <p className="pr-5 mb-0">#</p>
+//                       <p className="mb-0">Title</p>
+//                     </div>
+//                     <div>
+//                       <p className="mb-0">
+//                         <i class="bi bi-clock-history"></i>
+//                       </p>
+//                     </div>
+//                   </div>
+//                   <hr
+//                     style={{
+//                       color: "grey",
+//                       // backgroundColor: "#000000",
+//                       height: 0.5,
+//                       borderColor: "grey",
+//                       width: "80%",
+//                     }}
+//                   />
