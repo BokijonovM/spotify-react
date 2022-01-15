@@ -51,29 +51,30 @@
   background: #121212;
   background: -webkit-linear-gradient(
     to top,
-    #121212 60%,
-    #141414 71%,
-    #121212 81%,
-    #301917 93%,
+    #121212 70%,
+    #141414 80%,
+    #121212 90%,
+    #301917 95%,
     #401d1a 100%
   );
   background: -moz-linear-gradient(
     to top,
-    #121212 60%,
-    #141414 71%,
-    #121212 81%,
-    #301917 93%,
+    #121212 70%,
+    #141414 80%,
+    #121212 90%,
+    #301917 95%,
     #401d1a 100%
   );
   background: linear-gradient(
     to top,
-    #121212 60%,
-    #141414 71%,
-    #121212 81%,
-    #301917 93%,
+    #121212 70%,
+    #141414 80%,
+    #121212 90%,
+    #301917 95%,
     #401d1a 100%
   );
 }
+
 .nav-btn {
   border-radius: 99px;
 }
@@ -100,7 +101,7 @@
   color: black;
 }
 .main-nav-h6-text > h6:hover {
-  color: rgb(66, 66, 66);
+  color: rgb(231, 231, 231);
   /* border-bottom: 2px solid black; */
 }
 

@@ -18,7 +18,14 @@ const SingleSong = ({ albumCards }) => {
           src={albumCards.album.cover_medium}
         />
         <Card.Body>
-          <Card.Title>{albumCards.title}</Card.Title>
+          <Card.Title>
+            <a href="/" style={{ color: "white", textDecoration: "none" }}>
+              {albumCards.title}
+            </a>
+          </Card.Title>
+          <a href="/" style={{ color: "white", textDecoration: "none" }}>
+            {albumCards.artist.name}{" "}
+          </a>
         </Card.Body>
       </Card>
     </Col>
