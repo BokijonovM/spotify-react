@@ -39,7 +39,7 @@ function AlbumPage() {
   return (
     <div>
       <Row>
-        <Col md={2} className="p-0 bg-dark">
+        <Col md={2} className="p-0" style={{ backgroundColor: "black" }}>
           <MySidebar />
         </Col>
         <Col md={10} className="p-0 bg-light main-background-color-1">
@@ -79,7 +79,7 @@ function AlbumPage() {
                       ></i>
                       Verified artist
                     </h5>
-                    <h1 className="mb-0" style={{ fontSize: "96px" }}>
+                    <h1 className="mb-0" style={{ fontSize: "56px" }}>
                       {artists.name}
                     </h1>
                     <h6 className="pl-2" style={{ fontWeight: "bolder" }}>

@@ -49,6 +49,7 @@
 }
 
 .main-background-color-1 {
+  /* height: 2000px; */
   background: #121212;
   background: -webkit-linear-gradient(
     to top,
@@ -245,6 +246,14 @@
   width: 30%;
   background-color: rgb(199, 199, 199);
 }
+.shadow-needed {
+  -webkit-box-shadow: 0 28px 16px -26px rgba(0, 0, 0);
+  -moz-box-shadow: 0 28px 16px -26px rgba(0, 0, 0);
+  /* box-shadow: 0 28px 16px -26px rgba(0, 0, 0); */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 
 .progress {
   position: relative;
@@ -326,4 +335,28 @@ i:hover {
   .other-features {
     visibility: hidden;
   }
+}
+
+.hover-needed > p,
+.hover-needed > a > p {
+  margin-right: 20px;
+  padding-left: 5px;
+}
+
+.hover-needed > p:hover,
+.hover-needed > a > p:hover {
+  background-color: #191919;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hover-needed > p:active {
+  background-color: #191919;
+  border-radius: 5px;
+}
+
+.single-album-hover-needed:hover {
+  cursor: pointer;
+  background-color: #343a40;
+  border-radius: 5px;
 }

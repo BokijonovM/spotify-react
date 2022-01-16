@@ -6,6 +6,7 @@ import MyFooter from "./MyFooter";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loader from "./Loader";
+import SingleAlbum from "./SingleAlbum";
 
 function AlbumPage() {
   const params = useParams();
@@ -25,6 +26,7 @@ function AlbumPage() {
           let musics = await movieRes.json();
           console.log(musics);
           setAlbums(musics);
+          setIsLoading(false);
         } else {
           console.log("Sorry album error");
         }
@@ -39,18 +41,23 @@ function AlbumPage() {
   return (
     <div>
       <Row>
-        <Col md={2} className="p-0 bg-dark">
+        <Col md={2} className="p-0" style={{ backgroundColor: "black" }}>
           <MySidebar />
         </Col>
-        <Col md={10} className="p-0 bg-light main-background-color-1">
+        <Col
+          md={10}
+          className="px-0 pt-0 bg-light main-background-color-1"
+          style={{ paddingBottom: "120px" }}
+        >
           <MainNav />
           <Col>
             {typeof albums === "undefined" ? (
               <h1>404 - Album NOT FOUND</h1>
             ) : albums ? (
               <Container>
-                <Row className="d-flex align-items-center">
+                <Row className="d-flex align-items-end">
                   <img
+                    className="shadow-needed"
                     style={{
                       height: "200px",
                       marginTop: "100px",
@@ -65,16 +72,24 @@ function AlbumPage() {
                     }}
                   >
                     <h6>ALBUM</h6>
-                    <h2>{albums.artist.name}</h2>
-                    <h6>{albums.nb_tracks} SONGS</h6>
+                    <h2 style={{ fontSize: "56px" }}>{albums.title}</h2>
+                    <h6 className="mb-0">
+                      {albums.artist.name}
+                      <i class="bi bi-dot"></i>
+                      {albums.release_date}
+                      <i class="bi bi-dot"></i>
+                      {albums.nb_tracks} songs
+                      <i class="bi bi-dot"></i>
+                      {parseInt(albums.duration / "60")}h
+                    </h6>
                   </div>
                 </Row>
                 <Row className="justify-content-center">
                   <div
-                    className="pt-5 d-flex justify-content-between w-100"
+                    className="pt-5 px-2 d-flex justify-content-between w-100"
                     style={{
-                      paddingRight: "170px",
-                      paddingLeft: "170px",
+                      marginRight: "150px",
+                      marginLeft: "150px",
                     }}
                   >
                     <div className="d-flex">
@@ -98,10 +113,10 @@ function AlbumPage() {
                   />
                 </Row>
                 <Row className="justify-content-center">
-                  {isLoading ? (
+                  {/* {isLoading ? (
                     <Loader />
                   ) : (
-                    albums.map(album => {
+                    albums.tracks.map(album => {
                       return (
                         <div
                           style={{
@@ -111,14 +126,21 @@ function AlbumPage() {
                           className=" d-flex justify-content-between w-100"
                         >
                           <div className="d-flex">
-                            <p className="pr-5">{album.tracks.id}</p>
-                            <p>Queen</p>
+                            <p className="pr-5">1</p>
+                            <p>1</p>
                           </div>
                           <div>
-                            <p>{album.tracks.duration}</p>
+                            <p>Eminem</p>
                           </div>
                         </div>
                       );
+                    })
+                  )} */}
+                  {isLoading ? (
+                    <Loader />
+                  ) : (
+                    albums.tracks.data.map(album => {
+                      return <SingleAlbum albums={album} />;
                     })
                   )}
                 </Row>
