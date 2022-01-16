@@ -115,6 +115,18 @@ function AlbumPage() {
                     </div>
                   </div>
                 </Row>
+                <Row className="justify-content-center">
+                  <div
+                    className="pt-3 px-2 d-flex justify-content-between w-100"
+                    style={{
+                      marginRight: "150px",
+                      marginLeft: "100px",
+                    }}
+                  >
+                    <h2>Popular</h2>
+                  </div>
+                </Row>
+
                 <Row className="justify-content-center"></Row>
               </Container>
             ) : (

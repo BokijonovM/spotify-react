@@ -364,3 +364,15 @@ i:hover {
 .bi-play-circle-fill::before {
   color: #1db954;
 }
+
+/* @media (max-width: 935px) {
+  .responsive-needed {
+    flex-direction: column;
+  }
+  .sidebar-div {
+    position: relative;
+  }
+  .main-nav {
+    position: relative;
+  }
+} */

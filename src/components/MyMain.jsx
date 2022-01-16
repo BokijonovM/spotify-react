@@ -15,7 +15,7 @@ function MyMain() {
     const fetchMusic = async () => {
       try {
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem",
+          "https://striveschool-api.herokuapp.com/api/deezer/search?q=imagine",
           {
             method: "GET",
             headers: new Headers({
@@ -46,36 +46,19 @@ function MyMain() {
 
   return (
     <div className="home-page-div">
-      <Row>
+      <Row className="responsive-needed">
         <Col md={2} className="p-0" style={{ backgroundColor: "black" }}>
           <MySidebar />
         </Col>
         <Col md={10} className="p-0 main-background-color">
           <MainNav />
-          <div className="pt-5 ml-4">
+          <div className="pt-5 ml-4 main-page-responsive">
             <Container>
               <Row>
                 <h1 className="pt-4 pr-5" style={{ marginLeft: "80px" }}>
                   #THROWBACKTHURSDAY
                 </h1>
-                {/* <Col className="d-flex flex-column align-items-start">
-                  <img
-                    className="my-4"
-                    src={albumCard.artist}
-                    alt="albumCard1"
-                  />
-                  <h2 style={{ textAlign: "start" }}>{albumCard.title}</h2>
-                </Col> */}
-                {/* <Card className="ml-5 mt-5" style={{ marginBottom: "390px" }}>
-                  <Card.Img
-                    variant="top"
-                    style={{ width: "150px" }}
-                    src={albumCard.artist.picture}
-                  />
-                  <Card.Body>
-                    <Card.Title>{albumCard.title}</Card.Title>
-                  </Card.Body>
-                </Card> */}
+
                 <Row
                   className="pt-4 ml-5 pr-5"
                   style={{ marginBottom: "120px" }}
@@ -88,29 +71,12 @@ function MyMain() {
                     })
                   )}
                 </Row>
-
-                {/* {albumCard.map((album, i) => {
-                  return (
-                    <Card key={i}>
-                      <Card.Img
-                        variant="top"
-                        className="card-img1"
-                        src={album.artist.picture}
-                      />
-                      <Card.Body>
-                        <Card.Title>
-                          <h2>{album.title}</h2>
-                        </Card.Title>
-                      </Card.Body>
-                    </Card>
-                  );
-                })} */}
               </Row>
             </Container>
           </div>
         </Col>
-        <MyFooter />
       </Row>
+      <MyFooter />
     </div>
   );
 }
