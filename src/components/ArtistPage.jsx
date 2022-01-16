@@ -71,7 +71,7 @@ function AlbumPage() {
                       left: "100px",
                     }}
                   >
-                    <h5 className="mb-0 pl-2">
+                    <h5 className="mb-0 pl-1">
                       {" "}
                       <i
                         style={{ color: "#2e77d0 !important" }}
@@ -82,7 +82,7 @@ function AlbumPage() {
                     <h1 className="mb-0" style={{ fontSize: "56px" }}>
                       {artists.name}
                     </h1>
-                    <h6 className="pl-2" style={{ fontWeight: "bolder" }}>
+                    <h6 className="pl-1" style={{ fontWeight: "bolder" }}>
                       {artists.nb_fan} monthly listeners {artists.nb_album}{" "}
                       albums
                     </h6>

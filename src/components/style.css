@@ -47,9 +47,14 @@
   justify-content: center;
   height: 70px;
 }
+.position-fixed-needed {
+  position: fixed;
+  left: -180px;
+  top: -20px;
+}
 
 .main-background-color-1 {
-  /* height: 2000px; */
+  height: 2000px;
   background: #121212;
   background: -webkit-linear-gradient(
     to top,
