@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 
-const SingleAlbum = ({ albums }) => {
+const SingleArtist = ({ albums }) => {
   //   console.log("hello", albums);
   return (
     <Container>
@@ -38,4 +38,4 @@ const SingleAlbum = ({ albums }) => {
   );
 };
 
-export default SingleAlbum;
+export default SingleArtist;

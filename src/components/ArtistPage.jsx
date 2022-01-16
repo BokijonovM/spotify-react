@@ -88,32 +88,34 @@ function AlbumPage() {
                     </h6>
                   </div>
                 </Row>
+                <Row className="justify-content-center">
+                  <div
+                    className="pt-4 px-2 d-flex w-100 align-items-center"
+                    style={{
+                      marginRight: "150px",
+                      marginLeft: "93px",
+                    }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <i
+                        style={{
+                          fontSize: "50px",
+                          color: "#1db954 !important",
+                        }}
+                        class="mr-4 bi bi-play-circle-fill"
+                      ></i>
+                      <i
+                        style={{ fontSize: "30px" }}
+                        class="mr-4 bi bi-heart"
+                      ></i>
+                      <i
+                        style={{ fontSize: "30px" }}
+                        class="mr-4 bi bi-three-dots"
+                      ></i>
+                    </div>
+                  </div>
+                </Row>
                 <Row className="justify-content-center"></Row>
-                {/* <Row className="justify-content-center">
-                  {isLoading ? (
-                    <Loader />
-                  ) : (
-                    artists.map(artist => {
-                      return (
-                        <div
-                          style={{
-                            paddingRight: "170px",
-                            paddingLeft: "170px",
-                          }}
-                          className=" d-flex justify-content-between w-100"
-                        >
-                          <div className="d-flex">
-                            <p className="pr-5">{artist.tracks.id}</p>
-                            <p>Queen</p>
-                          </div>
-                          <div>
-                            <p>{artist.tracks.duration}</p>
-                          </div>
-                        </div>
-                      );
-                    })
-                  )}
-                </Row> */}
               </Container>
             ) : (
               <Loader />

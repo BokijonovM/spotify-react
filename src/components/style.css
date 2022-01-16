@@ -360,3 +360,7 @@ i:hover {
   background-color: #343a40;
   border-radius: 5px;
 }
+
+.bi-play-circle-fill::before {
+  color: #1db954;
+}

@@ -86,10 +86,37 @@ function AlbumPage() {
                 </Row>
                 <Row className="justify-content-center">
                   <div
-                    className="pt-5 px-2 d-flex justify-content-between w-100"
+                    className="pt-4 px-2 d-flex w-100 align-items-center"
                     style={{
                       marginRight: "150px",
-                      marginLeft: "150px",
+                      marginLeft: "93px",
+                    }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <i
+                        style={{
+                          fontSize: "50px",
+                          color: "#1db954 !important",
+                        }}
+                        class="mr-4 bi bi-play-circle-fill"
+                      ></i>
+                      <i
+                        style={{ fontSize: "30px" }}
+                        class="mr-4 bi bi-heart"
+                      ></i>
+                      <i
+                        style={{ fontSize: "30px" }}
+                        class="mr-4 bi bi-three-dots"
+                      ></i>
+                    </div>
+                  </div>
+                </Row>
+                <Row className="justify-content-center">
+                  <div
+                    className="pt-3 px-2 d-flex justify-content-between w-100"
+                    style={{
+                      marginRight: "150px",
+                      marginLeft: "110px",
                     }}
                   >
                     <div className="d-flex">
@@ -113,29 +140,6 @@ function AlbumPage() {
                   />
                 </Row>
                 <Row className="justify-content-center">
-                  {/* {isLoading ? (
-                    <Loader />
-                  ) : (
-                    albums.tracks.map(album => {
-                      return (
-                        <div
-                          style={{
-                            paddingRight: "170px",
-                            paddingLeft: "170px",
-                          }}
-                          className=" d-flex justify-content-between w-100"
-                        >
-                          <div className="d-flex">
-                            <p className="pr-5">1</p>
-                            <p>1</p>
-                          </div>
-                          <div>
-                            <p>Eminem</p>
-                          </div>
-                        </div>
-                      );
-                    })
-                  )} */}
                   {isLoading ? (
                     <Loader />
                   ) : (
@@ -157,47 +161,3 @@ function AlbumPage() {
 }
 
 export default AlbumPage;
-
-{
-  /* <div className="">
-  <Container>
-    <Row>
-      <div className="d-flex align-items-center">
-        <img
-          style={{
-            height: "200px",
-            marginTop: "100px",
-            marginLeft: "100px",
-          }}
-          src={albums.cover_xl}
-        />
-        <div
-          style={{
-            marginTop: "100px",
-            marginLeft: "20px",
-          }}
-        >
-          <h6>ALBUM</h6>
-          <h2>{albums.artist.name}</h2>
-          <h6>{albums.nb_tracks} SONGS</h6>
-        </div>
-      </div>
-      <div
-        style={{ paddingRight: "170px", paddingLeft: "170px" }}
-        className=" pt-5 d-flex justify-content-between w-100"
-      >
-        <div className="d-flex">
-          <p className="pr-5">{albums.tracks.id}</p>
-          <p>Queen</p>
-        </div>
-        <div>
-          <p>{albums.tracks.duration}</p>
-        </div>
-      </div>
-      <Row className="pt-4 ml-5 pr-5" style={{ marginBottom: "120px" }}>
-        {isLoading ? <Loader /> : <h1>{albums.id}</h1>}
-      </Row>
-    </Row>
-  </Container>
-</div>; */
-}
