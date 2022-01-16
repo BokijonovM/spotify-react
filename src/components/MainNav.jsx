@@ -1,12 +1,12 @@
 import React from "react";
-import { Navbar, Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { Navbar } from "react-bootstrap";
+import { useState } from "react";
 
 function MainNav() {
   const [navbar, setNavbar] = useState(false);
 
   const changeBackground = () => {
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 180) {
       setNavbar(true);
     } else {
       setNavbar(false);

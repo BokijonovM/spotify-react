@@ -1,8 +1,5 @@
 import React from "react";
-// import "../style/Song.css";
-import { Card } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-import { useState } from "react";
 
 const SingleArtist = ({ albums }) => {
   //   console.log("hello", albums);

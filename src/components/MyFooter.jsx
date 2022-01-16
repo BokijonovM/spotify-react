@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Button } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 
 function MyFooter() {
   return (

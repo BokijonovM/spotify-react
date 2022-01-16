@@ -1,6 +1,6 @@
 import React from "react";
 import MySidebar from "./MySidebar";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
 import { useState, useEffect } from "react";

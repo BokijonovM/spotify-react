@@ -72,7 +72,7 @@ function AlbumPage() {
                     }}
                   >
                     <h6>ALBUM</h6>
-                    <h2 style={{ fontSize: "56px" }}>{albums.title}</h2>
+                    <h2>{albums.title}</h2>
                     <h6 className="mb-0">
                       {albums.artist.name}
                       <i class="bi bi-dot"></i>

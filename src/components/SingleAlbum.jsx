@@ -1,11 +1,7 @@
 import React from "react";
-// import "../style/Song.css";
-import { Card } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-import { useState } from "react";
 
 const SingleAlbum = ({ albums }) => {
-  //   console.log("hello", albums);
   return (
     <Container>
       <Col style={{ backgroundColor: "transparent" }}>
@@ -16,6 +12,7 @@ const SingleAlbum = ({ albums }) => {
           >
             <div className="d-flex align-items-center ">
               <p className="pr-5 mb-0">1</p>
+
               <div>
                 <p className="mb-0" style={{ fontSize: "16px" }}>
                   {albums.title}
