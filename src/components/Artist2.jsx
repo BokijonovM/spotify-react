@@ -26,6 +26,7 @@ function AlbumPage() {
           let musics = await movieRes.json();
           console.log(musics);
           setArtists(musics);
+          setIsLoading(false);
         } else {
           console.log("Sorry album error");
         }
@@ -67,7 +68,7 @@ function AlbumPage() {
                       <div className="d-flex flex-column align-items-center">
                         <h1 className="mb-0">
                           {/* style={{ fontSize: "56px" }} */}
-                          {artists.name}
+                          {artists.name.slice(0, 10) + "..."}
                         </h1>
                         <h6 className="pl-1" style={{ fontWeight: "bolder" }}>
                           {artists.nb_fan} monthly listeners
