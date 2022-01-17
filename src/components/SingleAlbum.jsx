@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const SingleAlbum = ({ albums, i }) => {
+  const convertToTime = time => (time < 10 ? `0${time}` : time);
   return (
     <Container>
       <Col style={{ backgroundColor: "transparent" }}>
@@ -24,7 +25,7 @@ const SingleAlbum = ({ albums, i }) => {
                   <a
                     className="mb-0 text-muted mt-n1"
                     style={{ fontSize: "14px" }}
-                    href={"/artist/" + albums.artist.id}
+                    href={"/artist2/" + albums.artist.id}
                   >
                     {albums.artist.name}
                   </a>
@@ -34,10 +35,8 @@ const SingleAlbum = ({ albums, i }) => {
             <div className="d-flex align-items-center">
               <i className="bi bi-heart" id="bi-heart-id"></i>
               <p className="mb-0 px-4">
-                {parseInt(albums.duration / 60)}:
-                {parseFloat(albums.duration % 60)
-                  .toString()
-                  .padStart(2, "0")}
+                {convertToTime(parseInt(albums.duration / 60))}:
+                {convertToTime(albums.duration % 60)}
               </p>
               <i className="bi bi-three-dots"></i>
             </div>
