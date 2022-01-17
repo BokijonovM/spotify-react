@@ -32,7 +32,9 @@ const SingleAlbum = ({ albums, i }) => {
               </div>
             </div>
             <div>
-              <p className="mb-0">{albums.duration}</p>
+              <p className="mb-0">
+                {parseInt(albums.duration / 60)}:{albums.duration % 60}
+              </p>
             </div>
           </div>
         </Row>

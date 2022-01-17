@@ -1,6 +1,6 @@
 import React from "react";
 import MySidebar from "./MySidebar";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
 import { useParams } from "react-router-dom";
@@ -14,27 +14,31 @@ function AlbumPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAlbum = async () => {
-      try {
-        let movieRes = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/artist/" +
-            params.artistID
-        );
+    let ArtistId = params.artistID;
+    ArtistId ? fetchAlbum(ArtistId) : fetchAlbum("17");
+    console.log(ArtistId);
 
-        if (movieRes.ok) {
-          let musics = await movieRes.json();
-          console.log(musics);
-          setArtists(musics);
-        } else {
-          console.log("Sorry album error");
-        }
-      } catch (err) {
-        // console.log(err)
+    // fetchAlbum();
+  }, []);
+
+  const fetchAlbum = async ArtistId => {
+    try {
+      let movieRes = await fetch(
+        "https://striveschool-api.herokuapp.com/api/deezer/artist/" + ArtistId
+      );
+
+      if (movieRes.ok) {
+        let musics = await movieRes.json();
+        console.log(musics);
+        setArtists(musics);
+        setIsLoading(false);
+      } else {
+        console.log("Sorry album error");
       }
-    };
-
-    fetchAlbum();
-  }, [params.artistID]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -52,9 +56,6 @@ function AlbumPage() {
                 <Row className="d-flex align-items-center">
                   <img
                     style={{
-                      //   height: "200px",
-                      //   marginTop: "100px",
-                      //   marginLeft: "100px",
                       height: "350px",
                       width: "100vw",
                       objectFit: "cover",
@@ -104,10 +105,22 @@ function AlbumPage() {
                         }}
                         class="mr-4 bi bi-play-circle-fill"
                       ></i>
-                      <i
-                        style={{ fontSize: "30px" }}
-                        class="mr-4 bi bi-heart"
-                      ></i>
+                      <Button
+                        className="mr-4 py-1 px-3 following-needed shadow-none"
+                        variant="outline-secondary"
+                        onClick={() => {
+                          let follow = (document.querySelector(
+                            ".following-needed"
+                          ).innerHTML = "FOLLOWING");
+                        }}
+                        onDoubleClick={() => {
+                          let follow = (document.querySelector(
+                            ".following-needed"
+                          ).innerHTML = "FOLLOW");
+                        }}
+                      >
+                        FOLLOW
+                      </Button>
                       <i
                         style={{ fontSize: "30px" }}
                         class="mr-4 bi bi-three-dots"
