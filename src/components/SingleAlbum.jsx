@@ -21,7 +21,13 @@ const SingleAlbum = ({ albums }) => {
                   className="mb-0 text-muted mt-n1"
                   style={{ fontSize: "14px" }}
                 >
-                  {albums.artist.name}
+                  <a
+                    className="mb-0 text-muted mt-n1"
+                    style={{ fontSize: "14px" }}
+                    href={"/artist/" + albums.artist.id}
+                  >
+                    {albums.artist.name}
+                  </a>
                 </p>
               </div>
             </div>
