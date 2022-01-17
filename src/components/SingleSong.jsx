@@ -36,13 +36,6 @@ const SingleSong = ({ albumCards }) => {
           >
             {albumCards.artist.name}
           </a>
-          <a
-            className="card-artist-name"
-            href={"/artist2/" + albumCards.artist.id}
-            style={{ color: "white", textDecoration: "none", fontSize: "14px" }}
-          >
-            {albumCards.artist.name}
-          </a>
         </Card.Body>
       </Card>
     </Col>
