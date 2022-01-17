@@ -31,13 +31,7 @@ const SingleAlbum = ({ albums, i }) => {
                 </p>
               </div>
             </div>
-            <div
-              className="d-flex align-items-center"
-              onClick={() => {
-                let data = document.getElementById(".bi-heart-id");
-                data.style.fontSize = "40px";
-              }}
-            >
+            <div className="d-flex align-items-center">
               <i className="bi bi-heart" id="bi-heart-id"></i>
               <p className="mb-0 px-4">
                 {parseInt(albums.duration / 60)}:
