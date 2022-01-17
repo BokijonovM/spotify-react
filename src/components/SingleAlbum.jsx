@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-const SingleAlbum = ({ albums }) => {
+const SingleAlbum = ({ albums, i }) => {
   return (
     <Container>
       <Col style={{ backgroundColor: "transparent" }}>
@@ -11,7 +11,7 @@ const SingleAlbum = ({ albums }) => {
             className="px-3 py-1 my-1 d-flex justify-content-between align-items-center w-100 single-album-hover-needed"
           >
             <div className="d-flex align-items-center ">
-              <p className="pr-5 mb-0">1</p>
+              <p className="pr-5 mb-0">{i + 1}</p>
 
               <div>
                 <p className="mb-0" style={{ fontSize: "16px" }}>

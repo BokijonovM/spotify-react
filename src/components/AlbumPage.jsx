@@ -143,8 +143,8 @@ function AlbumPage() {
                   {isLoading ? (
                     <Loader />
                   ) : (
-                    albums.tracks.data.map(album => {
-                      return <SingleAlbum albums={album} />;
+                    albums.tracks.data.map((album, i) => {
+                      return <SingleAlbum key={i} albums={album} i={i} />;
                     })
                   )}
                 </Row>
