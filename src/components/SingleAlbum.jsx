@@ -7,7 +7,7 @@ const SingleAlbum = ({ albums, i }) => {
       <Col style={{ backgroundColor: "transparent" }}>
         <Row>
           <div
-            style={{ marginRight: "130px", marginLeft: "90px" }}
+            style={{ marginRight: "80px", marginLeft: "90px" }}
             className="px-3 py-1 my-1 d-flex justify-content-between align-items-center w-100 single-album-hover-needed"
           >
             <div className="d-flex align-items-center ">
@@ -31,10 +31,21 @@ const SingleAlbum = ({ albums, i }) => {
                 </p>
               </div>
             </div>
-            <div>
-              <p className="mb-0">
-                {parseInt(albums.duration / 60)}:{albums.duration % 60}
+            <div
+              className="d-flex align-items-center"
+              onClick={() => {
+                let data = document.getElementById(".bi-heart-id");
+                data.style.fontSize = "40px";
+              }}
+            >
+              <i className="bi bi-heart" id="bi-heart-id"></i>
+              <p className="mb-0 px-4">
+                {parseInt(albums.duration / 60)}:
+                {parseFloat(albums.duration % 60)
+                  .toString()
+                  .padStart(2, "0")}
               </p>
+              <i className="bi bi-three-dots"></i>
             </div>
           </div>
         </Row>
