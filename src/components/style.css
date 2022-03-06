@@ -83,10 +83,10 @@
 }
 
 .main-background-color {
-  background: #171717;
+  background: #121212;
   background: -webkit-linear-gradient(
     to top,
-    #171717 46%,
+    #121212 46%,
     #181818 66%,
     #191919 72%,
     #301917 79%,
@@ -94,7 +94,7 @@
   );
   background: -moz-linear-gradient(
     to top,
-    #171717 46%,
+    #121212 46%,
     #181818 66%,
     #191919 72%,
     #301917 79%,
@@ -102,7 +102,7 @@
   );
   background: linear-gradient(
     to top,
-    #171717 46%,
+    #121212 46%,
     #181818 66%,
     #191919 72%,
     #301917 79%,
@@ -255,9 +255,7 @@
   -webkit-box-shadow: 0 28px 16px -26px rgba(0, 0, 0);
   -moz-box-shadow: 0 28px 16px -26px rgba(0, 0, 0);
   /* box-shadow: 0 28px 16px -26px rgba(0, 0, 0); */
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .following-needed {
   font-size: 12px;
@@ -377,8 +375,11 @@ i:hover {
 .bi-play-circle-fill::before {
   color: #1db954;
 }
+.sidebar-d-none-needed {
+  padding: 0;
+}
 
-/* @media (max-width: 935px) {
+/* @media (max-width: 920px) {
   .responsive-needed {
     flex-direction: column;
   }
@@ -387,5 +388,11 @@ i:hover {
   }
   .main-nav {
     position: relative;
+  }
+  .sidebar-d-none-needed {
+    display: none !important;
+  }
+  .main-background-color {
+    width: 100vw + 100px !important;
   }
 } */

@@ -10,33 +10,73 @@ import "./style.css";
 
 function AlbumPage() {
   const params = useParams();
-  console.log("PARAMS!!", typeof params.albumID);
-  const [artists, setArtists] = useState(null);
+
+  const [artists, setArtists] = useState({});
+  const [songs, setSongs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchAlbum = async () => {
+      let headers = new Headers({
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387",
+      });
       try {
         let movieRes = await fetch(
           "https://striveschool-api.herokuapp.com/api/deezer/artist/" +
-            params.artist2ID
+            params.artist2ID,
+          {
+            method: "GET",
+            headers,
+          }
         );
 
         if (movieRes.ok) {
           let musics = await movieRes.json();
-          console.log(musics);
           setArtists(musics);
           setIsLoading(false);
         } else {
           console.log("Sorry album error");
         }
-      } catch (err) {
-        // console.log(err)
+      } catch (error) {
+        console.log("error", error);
       }
     };
 
     fetchAlbum();
-  }, [params.artist2ID]);
+  }, []);
+  useEffect(() => {
+    fetchWithName();
+  }, []);
+
+  const fetchWithName = async () => {
+    let headers = new Headers({
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+      "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387",
+    });
+    console.log("hello hi hu");
+    try {
+      let trackRes = await fetch(
+        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+          artists.name,
+        {
+          method: "GET",
+          headers,
+        }
+      );
+      if (trackRes.ok) {
+        let trackList = await trackRes.json();
+        setSongs(trackList);
+        console.log("trackList", trackList);
+      } else {
+        console.log("fetch artist with name error!");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  console.log("PARAMS!!", params.artist2ID);
 
   return (
     <div>
@@ -50,7 +90,7 @@ function AlbumPage() {
             {typeof artists === "undefined" ? (
               <h1>404 - Artist NOT FOUND</h1>
             ) : artists ? (
-              <Container>
+              <Container className="mr-0 pr-0">
                 <Row className="align-items-center ">
                   <Col
                     className="d-flex align-items-center position-fixed-needed flex-column justify-content-center"
@@ -64,6 +104,7 @@ function AlbumPage() {
                           objectPosition: "top",
                         }}
                         src={artists.picture_xl}
+                        alt="artist"
                       />
                       <div className="d-flex flex-column align-items-center">
                         <h1 className="mb-0">

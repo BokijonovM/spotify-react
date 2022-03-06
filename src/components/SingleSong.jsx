@@ -6,8 +6,8 @@ const SingleSong = ({ albumCards }) => {
   return (
     <Col xs={12} sm={6} md={3} style={{ backgroundColor: "transparent" }}>
       <Card
-        style={{ backgroundColor: "transparent", color: "white" }}
-        className="border-0 card my-2 p-3"
+        style={{ backgroundColor: "#181818", color: "white" }}
+        className="border-0 card my-2 p-3 shadow-needed"
         key={albumCards.id}
       >
         <Card.Img
@@ -24,13 +24,13 @@ const SingleSong = ({ albumCards }) => {
                 textDecoration: "none",
                 fontSize: "16px",
               }}
-              className="card-album-title"
+              className="card-album-title ml-n3"
             >
               {albumCards.title}
             </a>
           </Card.Title>
           <a
-            className="card-artist-name"
+            className="card-artist-name ml-n3"
             href={"/artist/" + albumCards.artist.id}
             style={{ color: "white", textDecoration: "none", fontSize: "14px" }}
           >

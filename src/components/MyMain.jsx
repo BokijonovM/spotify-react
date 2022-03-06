@@ -47,7 +47,11 @@ function MyMain() {
   return (
     <div className="home-page-div">
       <Row className="responsive-needed">
-        <Col md={2} className="p-0" style={{ backgroundColor: "black" }}>
+        <Col
+          md={2}
+          className="sidebar-d-none-needed"
+          style={{ backgroundColor: "black" }}
+        >
           <MySidebar />
         </Col>
         <Col md={10} className="p-0 main-background-color">
@@ -66,7 +70,7 @@ function MyMain() {
                   {isLoading ? (
                     <Loader />
                   ) : (
-                    albumCards.map(albumCard => {
+                    albumCards.map((albumCard) => {
                       return <SingleSong albumCards={albumCard} />;
                     })
                   )}

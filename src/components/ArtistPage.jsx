@@ -6,22 +6,22 @@ import MyFooter from "./MyFooter";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loader from "./Loader";
+import ArtistAlbum from "./ArtistAlbum";
 
 function AlbumPage() {
   const params = useParams();
-  console.log("PARAMS!!", typeof params.albumID);
-  const [artists, setArtists] = useState(null);
+  const [artists, setArtists] = useState({});
+  const [songs, setSongs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let ArtistId = params.artistID;
     ArtistId ? fetchAlbum(ArtistId) : fetchAlbum("17");
-    console.log(ArtistId);
 
     // fetchAlbum();
   }, []);
 
-  const fetchAlbum = async ArtistId => {
+  const fetchAlbum = async (ArtistId) => {
     try {
       let movieRes = await fetch(
         "https://striveschool-api.herokuapp.com/api/deezer/artist/" + ArtistId
@@ -32,6 +32,34 @@ function AlbumPage() {
         console.log(musics);
         setArtists(musics);
         setIsLoading(false);
+        const fetchWithName = async () => {
+          let headers = new Headers({
+            "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+            "X-RapidAPI-Key":
+              "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387",
+          });
+          console.log("hello hi hu");
+          try {
+            let trackRes = await fetch(
+              "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+                musics.name,
+              {
+                method: "GET",
+                headers,
+              }
+            );
+            if (trackRes.ok) {
+              let trackList = await trackRes.json();
+              setSongs(trackList.data);
+              console.log("trackList", trackList);
+            } else {
+              console.log("fetch artist with name error!");
+            }
+          } catch (error) {
+            console.log("error", error);
+          }
+        };
+        fetchWithName();
       } else {
         console.log("Sorry album error");
       }
@@ -52,12 +80,12 @@ function AlbumPage() {
             {typeof artists === "undefined" ? (
               <h1>404 - Artist NOT FOUND</h1>
             ) : artists ? (
-              <Container>
-                <Row className="d-flex align-items-center">
+              <Container className="">
+                <Row className="d-flex justify-content-center align-items-center">
                   <img
                     style={{
                       height: "350px",
-                      width: "100vw",
+                      width: "100%",
                       objectFit: "cover",
                       objectPosition: "top",
                       position: "relative",
@@ -91,7 +119,7 @@ function AlbumPage() {
                 </Row>
                 <Row className="justify-content-center">
                   <div
-                    className="pt-4 px-2 d-flex w-100 align-items-center"
+                    className="pt-4 px-2 w-100 align-items-center"
                     style={{
                       marginRight: "150px",
                       marginLeft: "93px",
@@ -126,17 +154,21 @@ function AlbumPage() {
                         class="mr-4 bi bi-three-dots"
                       ></i>
                     </div>
+                    <div>
+                      <h4>Popular releases</h4>
+                    </div>
                   </div>
                 </Row>
-                <Row className="justify-content-center">
+                <Row className=" mr-n5">
                   <div
                     className="pt-3 px-2 d-flex justify-content-between w-100"
                     style={{
-                      marginRight: "150px",
-                      marginLeft: "100px",
+                      marginRight: "80px",
+                      marginLeft: "50px",
+                      marginBottom: "100px",
                     }}
                   >
-                    <h2>Popular</h2>
+                    <ArtistAlbum songs={songs} />
                   </div>
                 </Row>
 
@@ -154,30 +186,3 @@ function AlbumPage() {
 }
 
 export default AlbumPage;
-
-// <div
-//                     className="pt-5 d-flex justify-content-between w-100"
-//                     style={{
-//                       paddingRight: "170px",
-//                       paddingLeft: "170px",
-//                     }}
-//                   >
-//                     <div className="d-flex">
-//                       <p className="pr-5 mb-0">#</p>
-//                       <p className="mb-0">Title</p>
-//                     </div>
-//                     <div>
-//                       <p className="mb-0">
-//                         <i class="bi bi-clock-history"></i>
-//                       </p>
-//                     </div>
-//                   </div>
-//                   <hr
-//                     style={{
-//                       color: "grey",
-//                       // backgroundColor: "#000000",
-//                       height: 0.5,
-//                       borderColor: "grey",
-//                       width: "80%",
-//                     }}
-//                   />

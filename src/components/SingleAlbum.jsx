@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const SingleAlbum = ({ albums, i }) => {
-  const convertToTime = time => (time < 10 ? `0${time}` : time);
+  const convertToTime = (time) => (time < 10 ? `0${time}` : time);
   return (
     <Container>
       <Col style={{ backgroundColor: "transparent" }}>
@@ -25,7 +25,7 @@ const SingleAlbum = ({ albums, i }) => {
                   <a
                     className="mb-0 text-muted mt-n1"
                     style={{ fontSize: "14px" }}
-                    href={"/artist2/" + albums.artist.id}
+                    href={"/artist/" + albums.artist.id}
                   >
                     {albums.artist.name}
                   </a>
