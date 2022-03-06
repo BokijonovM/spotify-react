@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "react-bootstrap";
+import MusicPlayerSlider from "./MusicPlayer";
+import VolumeMusic from "./VolumeMusic";
 
 function MyFooter({ selectedSong, cover, artistName }) {
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
@@ -58,23 +60,15 @@ function MyFooter({ selectedSong, cover, artistName }) {
               <i className="bi bi-arrow-repeat"></i>
             </div>
             <div className="progress-container mb-5 pt-0">
-              <span>0:39</span>
-              <div className="progress-bar">
-                <div className="progress"></div>
-              </div>
-              <span>
-                {minutes}:{secund}
-              </span>
+              <MusicPlayerSlider minutes={selectedSong.duration} />
             </div>
           </div>
           <div className="other-features">
             <i className="bi bi-list-ul"></i>
             <i className="bi bi-pc-display"></i>
             <div className="volume-bar">
-              <i className="bi bi-volume-down-fill"></i>
-              <div className="progress-bar">
-                <div className="progress"></div>
-              </div>
+              <i className="bi bi-volume-down-fill mr-n3"></i>
+              <VolumeMusic />
             </div>
           </div>
         </div>
@@ -84,3 +78,11 @@ function MyFooter({ selectedSong, cover, artistName }) {
 }
 
 export default MyFooter;
+
+// <span>0:39</span>
+//               <div className="progress-bar">
+//                 <div className="progress"></div>
+//               </div>
+//               <span>
+//                 {minutes}:{secund}
+//               </span>

@@ -15,7 +15,7 @@ function MyMain() {
     const fetchMusic = async () => {
       try {
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=imagine",
+          "https://striveschool-api.herokuapp.com/api/deezer/search?q=otabek",
           {
             method: "GET",
             headers: new Headers({
@@ -24,9 +24,6 @@ function MyMain() {
                 "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
             }),
           }
-          //   {
-          //     method: "GET",
-          //   }
         );
 
         if (response.ok) {
