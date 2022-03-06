@@ -378,12 +378,6 @@ i:hover {
   border-radius: 5px;
 }
 
-.single-album-hover-needed:hover {
-  cursor: pointer;
-  background-color: #343a40;
-  border-radius: 5px;
-}
-
 .bi-play-circle-fill::before {
   color: #1db954;
 }
@@ -417,10 +411,21 @@ i:hover {
   right: 3px;
   background-color: transparent !important;
   transition: all 0.9s ease;
-
   display: none;
 }
 .hover-for-dropdown-item:hover {
   background-color: grey;
   border-radius: 3px;
+}
+.d-none-block-love {
+  color: transparent !important;
+  transition: all 0.1s ease;
+}
+.single-album-hover-needed:hover {
+  cursor: pointer;
+  background-color: #343a40;
+  border-radius: 5px;
+}
+.single-album-hover-needed:hover .d-none-block-love {
+  color: white !important;
 }

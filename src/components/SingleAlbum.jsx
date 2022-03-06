@@ -74,7 +74,7 @@ const SingleAlbum = ({ albums, i }) => {
               </div>
             </div>
             <div className="d-flex align-items-center">
-              <i className="bi bi-heart" id="bi-heart-id"></i>
+              <i className="bi bi-heart d-none-block-love" id="bi-heart-id"></i>
               <p className="mb-0 px-4">
                 {convertToTime(parseInt(albums.duration / 60))}:
                 {convertToTime(albums.duration % 60)}
@@ -87,7 +87,7 @@ const SingleAlbum = ({ albums, i }) => {
                     id="dropdown-custom-components"
                     style={{ color: "black !important" }}
                   >
-                    <i className="bi bi-three-dots single-post-three-dots"></i>
+                    <i className="bi bi-three-dots single-post-three-dots d-none-block-love"></i>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu
