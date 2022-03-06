@@ -50,7 +50,7 @@ function MyMain() {
         <Col
           md={2}
           className="sidebar-d-none-needed"
-          style={{ backgroundColor: "black" }}
+          style={{ backgroundColor: "black", zIndex: "3" }}
         >
           <MySidebar />
         </Col>

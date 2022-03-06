@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import PostDropDown from "./PostDropDown";
 
 const SingleAlbum = ({ albums, i }) => {
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
@@ -38,7 +39,10 @@ const SingleAlbum = ({ albums, i }) => {
                 {convertToTime(parseInt(albums.duration / 60))}:
                 {convertToTime(albums.duration % 60)}
               </p>
-              <i className="bi bi-three-dots"></i>
+              <i
+                className="bi bi-three-dots"
+                onClick={() => <PostDropDown />}
+              ></i>
             </div>
           </div>
         </Row>

@@ -41,7 +41,11 @@ function AlbumPage() {
   return (
     <div>
       <Row>
-        <Col md={2} className="p-0" style={{ backgroundColor: "black" }}>
+        <Col
+          md={2}
+          className="p-0"
+          style={{ backgroundColor: "black", zIndex: "3" }}
+        >
           <MySidebar />
         </Col>
         <Col
