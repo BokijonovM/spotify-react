@@ -420,3 +420,7 @@ i:hover {
 
   display: none;
 }
+.hover-for-dropdown-item:hover {
+  background-color: grey;
+  border-radius: 3px;
+}

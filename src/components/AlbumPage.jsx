@@ -1,6 +1,6 @@
 import React from "react";
 import MySidebar from "./MySidebar";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Dropdown } from "react-bootstrap";
 import MainNav from "./MainNav";
 import MyFooter from "./MyFooter";
 import { useParams } from "react-router-dom";
@@ -37,6 +37,46 @@ function AlbumPage() {
 
     fetchAlbum();
   }, [params.albumID]);
+
+  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+      style={{ color: "black" }}
+      href=""
+      ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      {children}
+      {/* &#x25bc; */}
+    </a>
+  ));
+
+  // forwardRef again here!
+  // Dropdown needs access to the DOM of the Menu to measure it
+  const CustomMenu = React.forwardRef(
+    ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
+      const [value, setValue] = useState("");
+
+      return (
+        <div
+          ref={ref}
+          style={style}
+          className={className}
+          aria-labelledby={labeledBy}
+        >
+          <div className="mx-3 d-flex justify-content-center"></div>
+          <ul className="list-unstyled">
+            {React.Children.toArray(children).filter(
+              (child) =>
+                !value || child.props.children.toLowerCase().startsWith(value)
+            )}
+          </ul>
+        </div>
+      );
+    }
+  );
 
   return (
     <div>
@@ -108,10 +148,47 @@ function AlbumPage() {
                         style={{ fontSize: "30px" }}
                         class="mr-4 bi bi-heart"
                       ></i>
-                      <i
-                        style={{ fontSize: "30px" }}
-                        class="mr-4 bi bi-three-dots"
-                      ></i>
+                      <div className="ml-auto d-flex align-items-center">
+                        <Dropdown alignRight>
+                          <Dropdown.Toggle
+                            alignRight
+                            as={CustomToggle}
+                            id="dropdown-custom-components"
+                            style={{ color: "black !important" }}
+                          >
+                            <i
+                              className="bi bi-three-dots single-post-three-dots"
+                              style={{ fontSize: "30px" }}
+                            ></i>
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu
+                            style={{ width: "240px" }}
+                            as={CustomMenu}
+                            alignRight
+                            className="bg-dark m-0 p-0"
+                          >
+                            <div className="post-dropdown">
+                              <div className="d-flex align-items-center  mb-0 mb-0 justify-content-between px-3 py-2 hover-for-dropdown-item">
+                                <p className="mb-0">Follow</p>
+                              </div>
+                              <div className="d-flex align-items-center  mb-0 mb-0 justify-content-between px-3 py-2 hover-for-dropdown-item">
+                                <p className="mb-0">Go to artist radio</p>
+                              </div>
+                              <div className="d-flex align-items-center  mb-0 mb-0 justify-content-between px-3 py-2 hover-for-dropdown-item">
+                                <p className="mb-0">Share</p>
+                              </div>
+                              <hr
+                                className="m-0"
+                                style={{ background: "grey" }}
+                              ></hr>
+                              <div className="d-flex align-items-center  mb-0 mb-0 justify-content-between px-3 py-2 hover-for-dropdown-item">
+                                <p className="mb-0">Open in Desktop app</p>
+                              </div>
+                            </div>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
                     </div>
                   </div>
                 </Row>
