@@ -9,9 +9,20 @@
   width: 210px;
   padding-top: 20px;
 }
+.card {
+  transition: all 0.9s ease;
+}
 .card:hover {
   background-color: #2b2b2b !important;
   cursor: pointer;
+}
+.hover-for-badge:hover .p-absolute-for-img {
+  display: block !important;
+}
+.card:hover + .p-absolute-for-img {
+  background-color: #2b2b2b !important;
+  cursor: pointer;
+  display: block;
 }
 .main-nav {
   position: fixed;
@@ -32,13 +43,14 @@
   display: flex;
   justify-content: center;
   padding-left: 150px;
+  transition: all 0.4s ease;
 }
 
 .navbar.active {
   background-color: #181818 !important;
   color: white;
   position: fixed;
-  z-index: 999 !important;
+  z-index: 1 !important;
   padding-left: 150px;
   width: 100vw;
 
@@ -396,3 +408,15 @@ i:hover {
     width: 100vw + 100px !important;
   }
 } */
+.p-relative-for-badge {
+  position: relative;
+}
+.p-absolute-for-img {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  background-color: transparent !important;
+  transition: all 0.9s ease;
+
+  display: none;
+}

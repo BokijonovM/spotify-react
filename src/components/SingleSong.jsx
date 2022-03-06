@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 
 const SingleSong = ({ albumCards }) => {
@@ -7,14 +7,22 @@ const SingleSong = ({ albumCards }) => {
     <Col xs={12} sm={6} md={3} style={{ backgroundColor: "transparent" }}>
       <Card
         style={{ backgroundColor: "#181818", color: "white" }}
-        className="border-0 card my-2 p-3 shadow-needed"
+        className="border-0 card my-2 p-3 shadow-needed hover-for-badge"
         key={albumCards.id}
       >
-        <Card.Img
-          className="shadow-needed"
-          variant="top"
-          src={albumCards.album.cover_medium}
-        />
+        <div className="p-relative-for-badge">
+          <Card.Img variant="top" src={albumCards.album.cover_medium} />
+          <Badge className="p-absolute-for-img">
+            <i
+              style={{
+                fontSize: "40px",
+                color: "#1db954 !important",
+              }}
+              class="bi bi-play-circle-fill"
+            ></i>
+          </Badge>
+        </div>
+
         <Card.Body>
           <Card.Title>
             <a
