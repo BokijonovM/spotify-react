@@ -121,8 +121,8 @@ function AlbumPage() {
                   <div
                     className="pt-4 px-2 w-100 align-items-center"
                     style={{
-                      marginRight: "150px",
-                      marginLeft: "93px",
+                      marginRight: "80px",
+                      marginLeft: "60px",
                     }}
                   >
                     <div className="d-flex align-items-center">
@@ -164,7 +164,7 @@ function AlbumPage() {
                     className="pt-3 px-2 d-flex justify-content-between w-100"
                     style={{
                       marginRight: "80px",
-                      marginLeft: "50px",
+                      marginLeft: "60px",
                       marginBottom: "100px",
                     }}
                   >

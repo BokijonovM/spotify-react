@@ -45,30 +45,8 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #121212;
-  background: -webkit-linear-gradient(
-    to top,
-    #121212 46%,
-    #141414 66%,
-    #121212 72%,
-    #301917 79%,
-    #401d1a 100%
-  );
-  background: -moz-linear-gradient(
-    to top,
-    #121212 46%,
-    #141414 66%,
-    #121212 72%,
-    #301917 79%,
-    #401d1a 100%
-  );
-  background: linear-gradient(
-    to top,
-    #121212 46%,
-    #141414 66%,
-    #121212 72%,
-    #301917 79%,
-    #401d1a 100%
-  );
+  background: transparent !important;
+  z-index: 0 !important;
 }
 
 /* Handle */

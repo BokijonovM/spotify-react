@@ -38,7 +38,7 @@
   background-color: #181818 !important;
   color: white;
   position: fixed;
-  z-index: 1;
+  z-index: 999 !important;
   padding-left: 150px;
   width: 100vw;
 
