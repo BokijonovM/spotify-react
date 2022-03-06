@@ -15,7 +15,7 @@ function MyMain() {
     const fetchMusic = async () => {
       try {
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=xurshid",
+          "https://striveschool-api.herokuapp.com/api/deezer/search?q=imagine",
           {
             method: "GET",
             headers: new Headers({

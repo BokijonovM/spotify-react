@@ -25,6 +25,7 @@ const SingleAlbum = ({
   selectedMusic,
   selectedSong,
   cover,
+  artistName,
 }) => {
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
   console.log("albumsalbumsalbums", albums);
@@ -160,7 +161,11 @@ const SingleAlbum = ({
           </div>
         </Row>
       </Col>
-      <MyFooter2 selectedSong={selectedSong} cover={cover} />
+      <MyFooter2
+        selectedSong={selectedSong}
+        cover={cover}
+        artistName={artistName}
+      />
     </Container>
   );
 };

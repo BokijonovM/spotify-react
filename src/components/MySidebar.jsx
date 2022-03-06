@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import logo from "./logo.svg";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function MySidebar() {
   return (
@@ -11,7 +12,7 @@ function MySidebar() {
       </div>
 
       <div className="hover-needed">
-        <a className="text-light" style={{ textDecoration: "none" }} href="/">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <p
             style={{
               fontSize: "14px",
@@ -22,7 +23,7 @@ function MySidebar() {
             <i style={{ fontSize: "24px" }} class=" pr-3 bi bi-house-fill"></i>{" "}
             Home
           </p>
-        </a>
+        </Link>
         <p
           style={{ fontSize: "14px", fontWeight: "bolder" }}
           className="text-light d-flex align-items-center home-search-library py-1 mb-0"

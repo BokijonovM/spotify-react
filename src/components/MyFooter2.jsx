@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "react-bootstrap";
 
-function MyFooter({ selectedSong, cover }) {
+function MyFooter({ selectedSong, cover, artistName }) {
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
   const [audio, setAudio] = useState(new Audio(selectedSong.preview));
   const [playing, setPlaying] = useState(false);
@@ -13,6 +13,9 @@ function MyFooter({ selectedSong, cover }) {
   useEffect(() => {
     setAudio(new Audio(selectedSong.preview));
   }, [selectedSong]);
+  const minutes = convertToTime(parseInt(selectedSong.duration / 60)) || "03";
+  const secund = convertToTime(selectedSong.duration % 60) || "30";
+  const songTitle = selectedSong.title || "Song title";
   return (
     <div className="footer-div">
       <Navbar
@@ -27,8 +30,8 @@ function MyFooter({ selectedSong, cover }) {
                 <img src={cover} alt="" />
               </div>
               <div className="song-description">
-                <p className="title">{selectedSong.title}</p>
-                <p className="artist text-muted">{selectedSong.artist.name}</p>
+                <p className="title">{songTitle}</p>
+                <p className="artist text-muted">{artistName}</p>
               </div>
             </div>
             <div className="icons">
@@ -60,8 +63,7 @@ function MyFooter({ selectedSong, cover }) {
                 <div className="progress"></div>
               </div>
               <span>
-                {convertToTime(parseInt(selectedSong.duration / 60))}:
-                {convertToTime(selectedSong.duration % 60)}
+                {minutes}:{secund}
               </span>
             </div>
           </div>

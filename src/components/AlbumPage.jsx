@@ -30,8 +30,8 @@ function AlbumPage() {
         } else {
           console.log("Sorry album error");
         }
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     };
 
@@ -229,6 +229,7 @@ function AlbumPage() {
                         <SingleAlbum
                           key={i}
                           cover={albums.cover_xl}
+                          artistName={albums.artist.name}
                           albums={album}
                           i={i}
                         />
