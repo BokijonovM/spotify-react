@@ -67,6 +67,7 @@
 
 .main-background-color-1 {
   /* height: 2000px; */
+  width: 100vw !important;
   background: #121212;
   background: -webkit-linear-gradient(
     to top,
@@ -428,4 +429,12 @@ i:hover {
 }
 .single-album-hover-needed:hover .d-none-block-love {
   color: white !important;
+}
+@media (max-width: 920px) {
+  .sidebar-920-d-none {
+    display: none;
+  }
+  .artist-main-image-banner {
+    width: 100vw + 500px !important;
+  }
 }

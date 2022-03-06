@@ -1,10 +1,33 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Dropdown } from "react-bootstrap";
-import PostDropDown from "./PostDropDown";
+import MyFooter2 from "./MyFooter2";
+import { addToAlbumCartActionWithThunk } from "../redux/action";
+import { selectSongAction } from "../redux/action";
+import { connect } from "react-redux";
 
-const SingleAlbum = ({ albums, i }) => {
+const mapStateToProps = (state) => ({
+  selectedSong: state.songs.selectedSongs,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addToAlbumCart: (musicToAdd) => {
+    dispatch(addToAlbumCartActionWithThunk(musicToAdd));
+  },
+  selectedMusic: (musicToAdd) => {
+    dispatch(selectSongAction(musicToAdd));
+  },
+});
+
+const SingleAlbum = ({
+  albums,
+  i,
+  addToAlbumCart,
+  selectedMusic,
+  selectedSong,
+  cover,
+}) => {
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
-
+  console.log("albumsalbumsalbums", albums);
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       style={{ color: "black" }}
@@ -16,12 +39,9 @@ const SingleAlbum = ({ albums, i }) => {
       }}
     >
       {children}
-      {/* &#x25bc; */}
     </a>
   ));
 
-  // forwardRef again here!
-  // Dropdown needs access to the DOM of the Menu to measure it
   const CustomMenu = React.forwardRef(
     ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
       const [value, setValue] = useState("");
@@ -49,6 +69,7 @@ const SingleAlbum = ({ albums, i }) => {
       <Col style={{ backgroundColor: "transparent" }}>
         <Row>
           <div
+            onClick={() => selectedMusic(albums)}
             style={{ marginRight: "80px", marginLeft: "90px" }}
             className="px-3 py-1 my-1 d-flex justify-content-between align-items-center w-100 single-album-hover-needed"
           >
@@ -74,7 +95,13 @@ const SingleAlbum = ({ albums, i }) => {
               </div>
             </div>
             <div className="d-flex align-items-center">
-              <i className="bi bi-heart d-none-block-love" id="bi-heart-id"></i>
+              <i
+                className="bi bi-heart d-none-block-love"
+                id="bi-heart-id"
+                onClick={() => {
+                  addToAlbumCart(albums);
+                }}
+              ></i>
               <p className="mb-0 px-4">
                 {convertToTime(parseInt(albums.duration / 60))}:
                 {convertToTime(albums.duration % 60)}
@@ -133,8 +160,9 @@ const SingleAlbum = ({ albums, i }) => {
           </div>
         </Row>
       </Col>
+      <MyFooter2 selectedSong={selectedSong} cover={cover} />
     </Container>
   );
 };
 
-export default SingleAlbum;
+export default connect(mapStateToProps, mapDispatchToProps)(SingleAlbum);

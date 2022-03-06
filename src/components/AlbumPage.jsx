@@ -225,7 +225,14 @@ function AlbumPage() {
                     <Loader />
                   ) : (
                     albums.tracks.data.map((album, i) => {
-                      return <SingleAlbum key={i} albums={album} i={i} />;
+                      return (
+                        <SingleAlbum
+                          key={i}
+                          cover={albums.cover_xl}
+                          albums={album}
+                          i={i}
+                        />
+                      );
                     })
                   )}
                 </Row>
@@ -235,7 +242,6 @@ function AlbumPage() {
             )}
           </Col>
         </Col>
-        <MyFooter />
       </Row>
     </div>
   );

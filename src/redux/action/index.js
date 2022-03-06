@@ -16,9 +16,9 @@ export const removeFromCartAction = (indexToRemove) => ({
   payload: indexToRemove,
 });
 
-export const selectSongAction = (song) => ({
+export const selectSongAction = (musicToAdd) => ({
   type: SELECT_SONG,
-  payload: song,
+  payload: musicToAdd,
 });
 
 export const addToAlbumCartActionWithThunk = (musicToAdd) => {
@@ -34,58 +34,5 @@ export const addToAlbumCartActionWithThunk = (musicToAdd) => {
         payload: musicToAdd,
       });
     }
-  };
-};
-
-export const getAlbumsAction = (query) => {
-  console.log("in getAlbumsAction");
-  return (dispatch, getState) => {
-    const stateRightNow = getState();
-    setTimeout(async () => {
-      try {
-        let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/album/" + query,
-          {
-            method: "GET",
-            headers: {
-              "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-              "X-RapidAPI-Key":
-                "222902beabmshb95a65b737cead6p1f3ac9jsn23ced94c0d20",
-            },
-          }
-        );
-        if (response.ok) {
-          let data = await response.json();
-          console.log("Albums IN ACTION CREATOR", data.tracks.data);
-          dispatch({
-            type: GET_ALBUMS,
-            payload: data.tracks.data,
-          });
-          dispatch({
-            type: GET_ALBUMS_ALBUM,
-            payload: data,
-          });
-          dispatch({
-            type: GET_ALBUMS_LOADING,
-          });
-        } else {
-          console.log("error happened fetching the Albums");
-          dispatch({
-            type: GET_ALBUMS_ERROR,
-          });
-          dispatch({
-            type: GET_ALBUMS_LOADING,
-          });
-        }
-      } catch (error) {
-        console.log(error);
-        dispatch({
-          type: GET_ALBUMS_ERROR,
-        });
-        dispatch({
-          type: GET_ALBUMS_LOADING,
-        });
-      }
-    }, 1000);
   };
 };

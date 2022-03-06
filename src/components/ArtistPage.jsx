@@ -70,10 +70,10 @@ function AlbumPage() {
 
   return (
     <div>
-      <Row>
+      <Row className="justify-content-center">
         <Col
           md={2}
-          className="p-0"
+          className="p-0 sidebar-920-d-none"
           style={{ backgroundColor: "black", zIndex: "3" }}
         >
           <MySidebar />
@@ -84,9 +84,10 @@ function AlbumPage() {
             {typeof artists === "undefined" ? (
               <h1>404 - Artist NOT FOUND</h1>
             ) : artists ? (
-              <Container className="">
+              <Container fluid className="">
                 <Row className="d-flex justify-content-center align-items-center">
                   <img
+                    className="artist-main-image-banner"
                     style={{
                       height: "350px",
                       width: "100%",
