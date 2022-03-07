@@ -1,5 +1,7 @@
 import React from "react";
 import { Navbar } from "react-bootstrap";
+import MusicPlayerSlider from "./MusicPlayer";
+import VolumeMusic from "./VolumeMusic";
 
 function MyFooter() {
   return (
@@ -44,21 +46,15 @@ function MyFooter() {
               <i className="bi bi-arrow-repeat"></i>
             </div>
             <div className="progress-container mb-5 pt-0">
-              <span>0:39</span>
-              <div className="progress-bar">
-                <div className="progress"></div>
-              </div>
-              <span>2:58</span>
+              <MusicPlayerSlider />
             </div>
           </div>
           <div className="other-features">
             <i className="bi bi-list-ul"></i>
             <i className="bi bi-pc-display"></i>
             <div className="volume-bar">
-              <i className="bi bi-volume-down-fill"></i>
-              <div className="progress-bar">
-                <div className="progress"></div>
-              </div>
+              <i className="bi bi-volume-down-fill mr-n2"></i>
+              <VolumeMusic />
             </div>
           </div>
         </div>

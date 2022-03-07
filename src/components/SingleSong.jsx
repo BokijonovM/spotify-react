@@ -44,10 +44,12 @@ const SingleSong = ({ albumCards }) => {
               textDecoration: "none",
               fontSize: "14px",
             }}
-            className="card-album-title ml-n3"
+            className="card-album-titlee ml-n3"
             to={"/artist/" + albumCards.artist.id}
           >
-            <p className="mb-0">{albumCards.artist.name}</p>
+            <p className="mb-n4 pl-0 ml-n3 mt-n4">
+              {albumCards.artist.name.slice(0, 15) + "..."}
+            </p>
           </Link>
         </Card.Body>
       </Card>
