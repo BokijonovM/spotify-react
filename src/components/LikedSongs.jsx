@@ -7,6 +7,7 @@ import MyFooter from "./MyFooter";
 import { selectSongAction } from "../redux/action";
 import { removeFromCartAction } from "../redux/action";
 import MySidebar from "./MySidebar";
+import logo from "./image.jpg";
 
 const mapStateToProps = (state) => ({
   albumCart: state.albumCart.albums,
@@ -21,11 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-function LikedSongs({
-  selectedMusic,
-  removeFromCart,
-  albumCart,
-}) {
+function LikedSongs({ selectedMusic, removeFromCart, albumCart }) {
   const navigate = useNavigate();
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -88,7 +85,7 @@ function LikedSongs({
                 marginTop: "100px",
                 marginLeft: "100px",
               }}
-              src="https://i.pinimg.com/originals/26/f5/4b/26f54b6cd5edb1b1058476039022cbff.jpg"
+              src={logo}
             />
             <div
               style={{
