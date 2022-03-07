@@ -8,26 +8,16 @@ import { useState, useEffect } from "react";
 import Loader from "./Loader";
 import ArtistAlbum from "./ArtistAlbum";
 import { addToArtistCartActionWithThunk } from "../redux/action";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { removeFromArtistCartAction } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => ({
-  addToArtistCart: (artistToAdd) => {
-    dispatch(addToArtistCartActionWithThunk(artistToAdd));
-  },
-  removeFromArtistCart: (index) => {
-    dispatch(removeFromArtistCartAction(index));
-  },
-});
-
-function ArtistPage({ addToArtistCart, removeFromArtistCart }) {
+function ArtistPage() {
   const params = useParams();
   const [artists, setArtists] = useState({});
   const [songs, setSongs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
+  const cartArtists = useSelector((state) => state.artistCart.artists);
 
   useEffect(() => {
     let ArtistId = params.artistID;
@@ -35,6 +25,7 @@ function ArtistPage({ addToArtistCart, removeFromArtistCart }) {
 
     // fetchAlbum();
   }, []);
+  const isAlreadyInCart = cartArtists?.find((b) => b.id === artists?.id);
 
   const fetchAlbum = async (ArtistId) => {
     try {
@@ -195,38 +186,12 @@ function ArtistPage({ addToArtistCart, removeFromArtistCart }) {
                         className="mr-4 py-1 px-3 following-needed shadow-none"
                         variant="outline-secondary"
                         onClick={() => {
-                          if (
-                            document.querySelector(".following-needed")
-                              .textContent == "FOLLOW"
-                          ) {
-                            let follow =
-                              document.querySelector(".following-needed");
-
-                            addToArtistCart(artists);
-                            follow.innerHTML = "FOLLOWING";
-                            let follow1 = document.querySelector(
-                              ".following-to-follow"
-                            );
-                            follow1.innerHTML = "Following";
-                          } else {
-                            removeFromArtistCart(artists.id);
-                            let follow =
-                              document.querySelector(".following-needed");
-                            follow.innerHTML = "FOLLOW";
-                            let follow1 = document.querySelector(
-                              ".following-to-follow"
-                            );
-                            follow1.innerHTML = "Follow";
-                          }
-                        }}
-                        onDoubleClick={() => {
-                          removeFromArtistCart(artists.id);
-                          let follow = (document.querySelector(
-                            ".following-needed"
-                          ).innerHTML = "FOLLOW");
+                          isAlreadyInCart
+                            ? dispatch(removeFromArtistCartAction(artists.id))
+                            : dispatch(addToArtistCartActionWithThunk(artists));
                         }}
                       >
-                        FOLLOW
+                        {isAlreadyInCart ? "FOLLOWING" : "FOLLOW"}
                       </Button>
                       <div className="d-flex align-items-center">
                         <Dropdown alignRight>
@@ -253,19 +218,23 @@ function ArtistPage({ addToArtistCart, removeFromArtistCart }) {
                                 <p
                                   className="mb-0 following-to-follow"
                                   onClick={() => {
-                                    removeFromArtistCart(artists.id);
-                                    let follow =
-                                      document.querySelector(
-                                        ".following-needed"
+                                    if (isAlreadyInCart) {
+                                      dispatch(
+                                        removeFromArtistCartAction(artists.id)
                                       );
-                                    follow.innerHTML = "FOLLOW";
-                                    let follow1 = document.querySelector(
-                                      ".following-to-follow"
-                                    );
-                                    follow1.innerHTML = "Follow";
+                                      let follow =
+                                        document.querySelector(
+                                          ".following-needed"
+                                        );
+                                      follow.innerHTML = "FOLLOW";
+                                      let follow1 = document.querySelector(
+                                        ".following-to-follow"
+                                      );
+                                      follow1.innerHTML = "Follow";
+                                    }
                                   }}
                                 >
-                                  Follow
+                                  {isAlreadyInCart ? "Following" : "Follow"}
                                 </p>
                               </div>
                               <div className="d-flex align-items-center  mb-0 mb-0 justify-content-between px-3 py-2 hover-for-dropdown-item">
@@ -317,4 +286,4 @@ function ArtistPage({ addToArtistCart, removeFromArtistCart }) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArtistPage);
+export default ArtistPage;
