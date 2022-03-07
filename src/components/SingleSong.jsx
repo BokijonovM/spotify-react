@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Badge } from "react-bootstrap";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const SingleSong = ({ albumCards }) => {
   return (
@@ -25,25 +26,29 @@ const SingleSong = ({ albumCards }) => {
 
         <Card.Body>
           <Card.Title>
-            <a
-              href={"/album/" + albumCards.album.id}
+            <Link
               style={{
                 color: "white",
                 textDecoration: "none",
                 fontSize: "16px",
               }}
               className="card-album-title ml-n3"
+              to={"/album/" + albumCards.album.id}
             >
-              {albumCards.title}
-            </a>
+              <p className="mb-0">{albumCards.title}</p>
+            </Link>
           </Card.Title>
-          <a
-            className="card-artist-name ml-n3"
-            href={"/artist/" + albumCards.artist.id}
-            style={{ color: "white", textDecoration: "none", fontSize: "14px" }}
+          <Link
+            style={{
+              color: "white",
+              textDecoration: "none",
+              fontSize: "14px",
+            }}
+            className="card-album-title ml-n3"
+            to={"/album/" + albumCards.album.id}
           >
-            {albumCards.artist.name}
-          </a>
+            <p className="mb-0">{albumCards.artist.name}</p>
+          </Link>
         </Card.Body>
       </Card>
     </Col>

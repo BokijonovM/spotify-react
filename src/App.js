@@ -6,6 +6,7 @@ import ArtistPage from "./components/ArtistPage";
 import AlbumPage from "./components/AlbumPage";
 import Artist2 from "./components/Artist2";
 import MusicPlayerSlider from "./components/MusicPlayer";
+import LikedSongs from "./components/LikedSongs";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="/" element={<MyMain />} />
           <Route path="/artist/:artistID" element={<ArtistPage />} />
           <Route path="/artist2/:artist2ID" element={<Artist2 />} />
-          <Route path="/play" element={<MusicPlayerSlider />} />
+          <Route path="/liked-songs" element={<LikedSongs />} />
           {/* <Route path="/album" element={<AlbumPage />} /> */}
           <Route path="/album/:albumID" element={<AlbumPage />} />
         </Routes>

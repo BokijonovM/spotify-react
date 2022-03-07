@@ -51,18 +51,21 @@ function MySidebar() {
           ></i>
           Create playlist
         </p>
-        <p
-          style={{ fontSize: "14px", fontWeight: "bolder" }}
-          className="text-light d-flex align-items-center home-search-library py-1 mb-0"
-        >
-          <i
-            style={{
-              fontSize: "24px",
-            }}
-            class="bi bi-heart-fill"
-          ></i>
-          <span className="pl-3">Liked songs</span>
-        </p>
+        <Link to="/liked-songs" style={{ textDecoration: "none" }}>
+          <p
+            style={{ fontSize: "14px", fontWeight: "bolder" }}
+            className="text-light d-flex align-items-center home-search-library py-1 mb-0"
+          >
+            <i
+              style={{
+                fontSize: "24px",
+              }}
+              class="bi bi-heart-fill"
+            ></i>
+            <span className="pl-3">Liked songs</span>
+          </p>
+        </Link>
+
         <div
           className="d-flex flex-column pr-4"
           style={{ position: "absolute", bottom: "120px" }}
