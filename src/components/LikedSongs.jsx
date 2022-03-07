@@ -10,8 +10,6 @@ import MySidebar from "./MySidebar";
 
 const mapStateToProps = (state) => ({
   albumCart: state.albumCart.albums,
-  cartLength: state.albumCart.albums.length,
-  selectedSong: state.songs.selectedSongs,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,8 +25,6 @@ function LikedSongs({
   selectedMusic,
   removeFromCart,
   albumCart,
-  cartLength,
-  selectedSong,
 }) {
   const navigate = useNavigate();
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
