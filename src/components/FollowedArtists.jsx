@@ -6,6 +6,7 @@ import MyFooter from "./MyFooter";
 import { connect } from "react-redux";
 import { removeFromArtistCartAction } from "../redux/action";
 import { Link } from "react-router-dom";
+import logo from "./image.jpg";
 
 const mapStateToProps = (state) => ({
   artistCart: state.artistCart.artists,
@@ -35,6 +36,26 @@ function FollowedArtists({ artistCart, removeFromArtistCart }) {
           style={{ paddingBottom: "120px" }}
         >
           <MainNav />
+          <Row className="d-flex align-items-end mb-5">
+            <img
+              className="shadow-needed"
+              style={{
+                height: "200px",
+                marginTop: "100px",
+                marginLeft: "100px",
+              }}
+              src={logo}
+            />
+            <div
+              style={{
+                marginTop: "100px",
+                marginLeft: "20px",
+              }}
+            >
+              <h6>PLAYLIST</h6>
+              <h1 className="mb-0">Liked Songs</h1>
+            </div>
+          </Row>
           <Row
             className="mt-5"
             style={{

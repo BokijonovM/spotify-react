@@ -194,16 +194,30 @@ function ArtistPage({ addToArtistCart, removeFromArtistCart }) {
                       <Button
                         className="mr-4 py-1 px-3 following-needed shadow-none"
                         variant="outline-secondary"
-                        onClick={(value) => {
-                          let follow =
-                            document.querySelector(".following-needed");
+                        onClick={() => {
+                          if (
+                            document.querySelector(".following-needed")
+                              .textContent == "FOLLOW"
+                          ) {
+                            let follow =
+                              document.querySelector(".following-needed");
 
-                          addToArtistCart(artists);
-                          follow.innerHTML = "FOLLOWING";
-                          let follow1 = document.querySelector(
-                            ".following-to-follow"
-                          );
-                          follow1.innerHTML = "Following";
+                            addToArtistCart(artists);
+                            follow.innerHTML = "FOLLOWING";
+                            let follow1 = document.querySelector(
+                              ".following-to-follow"
+                            );
+                            follow1.innerHTML = "Following";
+                          } else {
+                            removeFromArtistCart(artists.id);
+                            let follow =
+                              document.querySelector(".following-needed");
+                            follow.innerHTML = "FOLLOW";
+                            let follow1 = document.querySelector(
+                              ".following-to-follow"
+                            );
+                            follow1.innerHTML = "Follow";
+                          }
                         }}
                         onDoubleClick={() => {
                           removeFromArtistCart(artists.id);
