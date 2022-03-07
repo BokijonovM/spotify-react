@@ -439,3 +439,9 @@ i:hover {
     width: 100vw + 500px !important;
   }
 }
+.p-absolute-for-cart {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background-color: transparent !important;
+}

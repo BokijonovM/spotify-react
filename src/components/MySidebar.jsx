@@ -30,16 +30,18 @@ function MySidebar() {
         >
           <i style={{ fontSize: "24px" }} class="pr-3 bi bi-search"></i> Search
         </p>
-        <p
-          style={{ fontSize: "14px", fontWeight: "bolder" }}
-          className="text-light d-flex align-items-center home-search-library py-2 mb-0"
-        >
-          <i
-            style={{ fontSize: "24px" }}
-            class="pr-3 bi bi-music-note-list"
-          ></i>{" "}
-          Your library
-        </p>
+        <Link to="/followed-artists" style={{ textDecoration: "none" }}>
+          <p
+            style={{ fontSize: "14px", fontWeight: "bolder" }}
+            className="text-light d-flex align-items-center home-search-library py-1 mb-0"
+          >
+            <i
+              style={{ fontSize: "24px" }}
+              class="pr-3 bi bi-music-note-list"
+            ></i>{" "}
+            Your library
+          </p>
+        </Link>
 
         <p
           style={{ fontSize: "14px", fontWeight: "bolder" }}

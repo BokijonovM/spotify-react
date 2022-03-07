@@ -45,7 +45,7 @@ const SingleSong = ({ albumCards }) => {
               fontSize: "14px",
             }}
             className="card-album-title ml-n3"
-            to={"/album/" + albumCards.album.id}
+            to={"/artist/" + albumCards.artist.id}
           >
             <p className="mb-0">{albumCards.artist.name}</p>
           </Link>

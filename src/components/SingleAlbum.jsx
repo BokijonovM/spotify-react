@@ -4,6 +4,7 @@ import MyFooter2 from "./MyFooter2";
 import { addToAlbumCartActionWithThunk } from "../redux/action";
 import { selectSongAction } from "../redux/action";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const mapStateToProps = (state) => ({
   selectedSong: state.songs.selectedSongs,
@@ -85,13 +86,14 @@ const SingleAlbum = ({
                   className="mb-0 text-muted mt-n1"
                   style={{ fontSize: "14px" }}
                 >
-                  <a
+                  <Link
+                    to={"/artist/" + albums.artist.id}
                     className="mb-0 text-muted mt-n1"
                     style={{ fontSize: "14px" }}
-                    href={"/artist/" + albums.artist.id}
                   >
+                    {" "}
                     {albums.artist.name}
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
