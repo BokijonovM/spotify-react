@@ -65,6 +65,7 @@ export default function SignUp() {
     dispatch(setUserSurNameAction(surname));
     dispatch(setUserEmailAction(email));
     dispatch(setUserPasswordAction(password));
+    navigate("/");
   };
 
   return (
@@ -146,7 +147,6 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => navigate("/")}
               disabled={(!name, !surname, !email, !password)}
             >
               Sign Up
