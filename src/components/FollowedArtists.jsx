@@ -53,7 +53,7 @@ function FollowedArtists({ artistCart, removeFromArtistCart }) {
               }}
             >
               <h6>PLAYLIST</h6>
-              <h1 className="mb-0">Liked Songs</h1>
+              <h1 className="mb-0">Your Library</h1>
             </div>
           </Row>
           <Row
