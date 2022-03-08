@@ -3,8 +3,10 @@ import "./style.css";
 import logo from "./logo.svg";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function MySidebar() {
+  const username = useSelector((state) => state.user.name);
   return (
     <div className="sidebar-div pl-5">
       <div>
@@ -72,15 +74,18 @@ function MySidebar() {
           className="d-flex flex-column pr-4"
           style={{ position: "absolute", bottom: "120px" }}
         >
-          <Button
-            className="nav-btn shadow-none px-5 border-0 mb-2 text-dark"
-            variant="light"
-          >
-            SIGN UP
-          </Button>
-          <Button className="nav-btn shadow-none px-5 border-0" variant="dark">
-            LOG IN
-          </Button>
+          <Link to="/sign-up" style={{ textDecoration: "none" }}>
+            {username ? (
+              <div></div>
+            ) : (
+              <Button
+                className="nav-btn shadow-none px-5 border-0 mb-2 text-dark"
+                variant="light"
+              >
+                SIGN UP
+              </Button>
+            )}
+          </Link>
         </div>
       </div>
     </div>

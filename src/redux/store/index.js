@@ -7,6 +7,7 @@ import cartReducerArtist from "../reducer/artist";
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
+import userReducer from "../reducer/user";
 
 const aComposeFunctionThatAlwaysWorks =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -33,6 +34,12 @@ export const initialState = {
     isError: false,
     isLoading: true,
   },
+  user: {
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+  },
 };
 
 const persistConfig = {
@@ -50,6 +57,7 @@ const bigReducer = combineReducers({
   album: albumReducer,
   songs: SongReducer,
   artistCart: cartReducerArtist,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

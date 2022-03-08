@@ -1,0 +1,16 @@
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.signIn-main-div {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
+  border-color: white !important;
+  border-radius: 5px solid white !important;
+}
