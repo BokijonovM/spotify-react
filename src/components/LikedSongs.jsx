@@ -130,7 +130,7 @@ function LikedSongs({ selectedMusic, removeFromCart, albumCart }) {
                       </div>
                       <div className="d-flex align-items-center">
                         <i
-                          className="bi bi-heart d-none-block-love"
+                          className="bi bi-heart-fill d-none-block-love"
                           id="bi-heart-id"
                           onClick={() => {
                             removeFromCart(i);

@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import MyFooter2 from "./MyFooter2";
-import { addToAlbumCartActionWithThunk } from "../redux/action";
+import {
+  addToAlbumCartActionWithThunk,
+  removeFromCartAction,
+} from "../redux/action";
 import { selectSongAction } from "../redux/action";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const mapStateToProps = (state) => ({
   selectedSong: state.songs.selectedSongs,
+  favSongs: state.albumCart.albums,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addToAlbumCart: (musicToAdd) => {
     dispatch(addToAlbumCartActionWithThunk(musicToAdd));
+  },
+  removeFromAlbumCart: (indexToRemove) => {
+    dispatch(removeFromCartAction(indexToRemove));
   },
   selectedMusic: (musicToAdd) => {
     dispatch(selectSongAction(musicToAdd));
@@ -27,7 +35,11 @@ const SingleAlbum = ({
   selectedSong,
   cover,
   artistName,
+  removeFromAlbumCart,
+  favSongs,
 }) => {
+  const isLiked = !!favSongs.find((item) => item.id === albums.id);
+  const [like, setLike] = useState(isLiked);
   const convertToTime = (time) => (time < 10 ? `0${time}` : time);
   console.log("albumsalbumsalbums", albums);
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -66,6 +78,7 @@ const SingleAlbum = ({
       );
     }
   );
+
   return (
     <Container>
       <Col style={{ backgroundColor: "transparent" }}>
@@ -98,13 +111,27 @@ const SingleAlbum = ({
               </div>
             </div>
             <div className="d-flex align-items-center">
-              <i
-                className="bi bi-heart d-none-block-love"
-                id="bi-heart-id"
+              <span
+                className="heart-icon pAbsolute"
+                style={{ display: !like ? "block" : "none" }}
                 onClick={() => {
                   addToAlbumCart(albums);
+                  setLike(!like);
                 }}
-              ></i>
+              >
+                <i className="bi bi-heart d-none-block-love"></i>
+              </span>
+              <span
+                className="heart-icon pAbsolute"
+                style={{ display: like ? "block" : "none" }}
+                onClick={() => {
+                  removeFromAlbumCart(i);
+                  setLike(!like);
+                }}
+              >
+                <i className="bi bi-heart-fill d-none-block-love"></i>
+              </span>
+
               <p className="mb-0 px-4">
                 {convertToTime(parseInt(albums.duration / 60))}:
                 {convertToTime(albums.duration % 60)}
@@ -173,3 +200,14 @@ const SingleAlbum = ({
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleAlbum);
+
+// <i
+//   className="bi bi-heart d-none-block-love"
+//   id="bi-heart-id"
+//   onClick={() => {
+//     addToAlbumCart(albums);
+//   }}
+// ></i>
+// <i
+//   className="bi bi-heart d-none-block-love"
+// ></i>
